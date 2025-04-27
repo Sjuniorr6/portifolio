@@ -186,7 +186,7 @@ section {
 
 /* Hero Section Atualizado */
 .hero {
-    min-height: 100vh;
+    min-height: 80vh;
     background: var(--bg-primary);
     position: relative;
     overflow: hidden;
