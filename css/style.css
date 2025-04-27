@@ -6,7 +6,7 @@
     --dark-color: #0a0b1a;       /* Very dark blue */
     --light-color: #ffffff;      /* White */
     --gray-color: #8892b0;       /* Cool gray */
-    --text-primary: #2f5381;     /* Light blue white */
+    --text-primary: #0956bb;     /* Light blue white */
     --text-secondary: #8892b0;   /* Cool gray */
     --text-light: #ffffff;       /* White */
     --bg-primary: #0a0b1a;       /* Very dark blue */
@@ -441,7 +441,7 @@ section {
 
 .projeto-item:hover {
     transform: translateY(-8px);
-    border-color: rgba(0, 242, 254, 0.3);
+    border-color: rgba(61, 239, 248, 0.3);
 }
 
 .projeto-item:hover::before {
