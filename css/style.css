@@ -1,6 +1,7 @@
 /* Variáveis e Estilos Gerais */
 :root {
     --primary-color: #00f2fe;    /* Cyan neon */
+    --quemsou-color: #e5edee;    /* Cyan neon */
     --secondary-color: #4a00e0;  /* Deep purple */
     --accent-color: #7b2ff7;     /* Bright purple */
     --dark-color: #0a0b1a;       /* Very dark blue */
@@ -409,6 +410,9 @@ section {
 .progress-bar {
     background: var(--primary-color);
     border-radius: 4px;
+}
+#quemSou{
+    color: var(--quemsou-color);
 }
 
 /* Projetos Section */
