@@ -1,21 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SJR Portfólio | Desenvolvedor Web</title>
+    <title>Sidnei Junior - Desenvolvedor Full Stack</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&family=Pacifico:wght@400&family=Righteous:wght@400&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar">
-    <!-- Navbar -->
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">SJR</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <div class="loading-text">Carregando...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">SJR Portfólio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="#home">
+                <span class="brand-text">SJR</span>
+                <span class="brand-subtitle">Portfolio</span>
+            </a>
+            
+                            <button class="mobile-menu-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -39,76 +68,141 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero d-flex align-items-center">
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-grid"></div>
+        </div>
+        
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 hero-text">
-                    <h1><span id="typewriter" class="highlight">Desenvolvedor Full Stack</span></h1>
-                    <p class="lead"  id="quemSou">Transformando ideias em aplicações web de alta performance</p>
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="bi bi-code-slash"></i>
+                            <span>Desenvolvedor Full Stack</span>
+                        </div>
+                        
+                        <h1 class="hero-title">
+                            <span class="hero-greeting">Olá, meu nome é</span>
+                            <span class="hero-name">Sidnei</span>
+                        </h1>
+                        
+                        <p class="hero-subtitle">
+                            Transformando ideias em <span class="typewriter" id="typewriter"></span>
+                        </p>
+                        
+                        <p class="hero-description">
+                            Desenvolvedor apaixonado por criar soluções inovadoras e experiências digitais excepcionais.
+                        </p>
+                        
+                        <div class="hero-buttons">
+
+                        </div>
+                    </div>
+                </div>
                 
-                </div>
-                <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                    <div class="profile-img">
-                        <img src="static/images/portifolio.jpg" alt="Profile" class="img-fluid rounded-circle">
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="hero-visual">
+                        <div class="profile-container">
+                            <div class="profile-image">
+                                <img src="static/images/portifolio.jpg" alt="Sidnei Junior">
+                            </div>
+                            <div class="profile-glow"></div>
+                            <div class="floating-elements">
+                                <div class="floating-icon" style="--delay: 0s">
+                                    <i class="bi bi-react"></i>
+                                </div>
+                                <div class="floating-icon" style="--delay: 1s">
+                                    <i class="bi bi-braces"></i>
+                                </div>
+                                <div class="floating-icon" style="--delay: 2s">
+                                    <i class="bi bi-database"></i>
+                                </div>
+                                <div class="floating-icon" style="--delay: 3s">
+                                    <i class="bi bi-gear"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-shape-bottom">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#f8fafc" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll</span>
         </div>
     </section>
 
-    <!-- Sobre Section -->
-    <section id="sobre" class="py-5">
+    <!-- About Section -->
+    <section id="sobre" class="about-section">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Sobre Mim</h2>
-                    <div class="divider"></div>
-                </div>
-                <div class="col-md-6">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p class="section-subtitle">Conheça minha jornada e experiência</p>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
                     <div class="about-content">
-                        <h3><i class="bi bi-person-badge me-2"></i>Quem Sou</h3>
-                        <p id="quemSou">Desenvolvedor, atualmente atuando como Software Engineer. Crio soluções web inovadoras e funcionais. Especializado em desenvolvimento Full Stack, Machine Learning e Ciência de Dados, com foco em tecnologias modernas e boas práticas de programação.</p>
-                        <p id="quemSou">Minha jornada na programação começou na faculdade e desde então venho aprimorando minhas habilidades e conhecimentos para entregar produtos de alta performance.</p>
-                        <div class="mt-4">
-                            <a href="#" class="btn btn-primary cv-download">
-                                <i class="bi bi-download me-2"></i>Download CV
-                            </a>
+                        <div class="about-text">
+                            <p>Sou um desenvolvedor Full Stack apaixonado por tecnologia e inovação. Com experiência em desenvolvimento web, mobile e sistemas empresariais.</p>
+                            
+                            <div class="about-features">
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Desenvolvimento Full Stack</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Arquitetura de Sistemas</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>DevOps & Cloud</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Machine Learning</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h3><i class="bi bi-briefcase me-2"></i>Experiência Profissional</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-date">Jan 2025 - Presente</div>
-                            <div class="timeline-content">
-                                <h4>Software Engineer Junior</h4>
-                                <p>GRUPO GOLDEN SAT</p>
-                                <ul class="timeline-details">
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Desenvolvimento e manutenção de aplicações em Django, Python, e React</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Implantação e manutenção de sistemas na AWS</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Desenvolvimento de soluções para rastreamento de veículos</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Aplicação de IA para reconhecimento de padrões em imagens</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Trabalho com metodologias ágeis (Scrum e Kanban)</li>
-                                </ul>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="timeline-container">
+                        <div class="timeline">
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Jan 2025 - Presente</h4>
+                                    <h5>Software Engineer Junior</h5>
+                                    <p class="timeline-company">GRUPO GOLDEN SAT</p>
+                                    <ul class="timeline-details">
+                                        <li>Desenvolvimento e manutenção de aplicações em Django, Python, e React</li>
+                                        <li>Implantação e manutenção de sistemas na AWS</li>
+                                        <li>Desenvolvimento de soluções para rastreamento de veículos</li>
+                                        <li>Aplicação de IA para reconhecimento de padrões em imagens</li>
+                                        <li>Trabalho com metodologias ágeis (Scrum e Kanban)</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Jul 2024 - Presente</div>
-                            <div class="timeline-content">
-                                <h4>Desenvolvedor Full Stack</h4>
-                                <p>GRUPO GOLDEN SAT</p>
-                                <ul class="timeline-details">
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Criação de dashboards interativos e relatórios no Power BI</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Desenvolvimento de modelos de Machine Learning</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Gerenciamento de SQL Server e SQLite3</li>
-                                    <li><i class="bi bi-check-circle-fill me-2"></i>Desenvolvimento web com Django e integração de APIs</li>
-                                </ul>
+                            
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Jul 2024 - Presente</h4>
+                                    <h5>Desenvolvedor Full Stack</h5>
+                                    <p class="timeline-company">GRUPO GOLDEN SAT</p>
+                                    <ul class="timeline-details">
+                                        <li>Criação de dashboards interativos e relatórios no Power BI</li>
+                                        <li>Desenvolvimento de modelos de Machine Learning</li>
+                                        <li>Gerenciamento de SQL Server e SQLite3</li>
+                                        <li>Desenvolvimento web com Django e integração de APIs</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,244 +211,133 @@
         </div>
     </section>
 
-    <!-- Habilidades Section -->
-    <section id="habilidades" class="py-5 bg-light">
+    <!-- Skills Section -->
+    <section id="habilidades" class="skills-section">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Minhas Habilidades</h2>
-                    <div class="divider"></div>
-                </div>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Habilidades</h2>
+                <p class="section-subtitle">Tecnologias e ferramentas que domino</p>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Tecnologias</h3>
-                    <div class="skills-container">
-                        <div class="skill-item">
-                            <span class="skill-name" id="quemSou">HTML5/CSS3</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+            
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Frontend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item" data-skill="React" data-level="90">
+                            <div class="skill-icon">
+                                <i class="bi bi-braces"></i>
                             </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name" id="quemSou">JavaScript</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name"  id="quemSou">React</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name"  id="quemSou">Node.js</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name"  id="quemSou">Python</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3>Outras Habilidades</h3>
-                    <div class="skills-container">
-                        <div class="skill-item">
-                            <span class="skill-name"  id="quemSou">Git & GitHub</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name"  id="quemSou">UI/UX Design</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name"  id="quemSou">bootstrap</span>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projetos Section -->
-    <section id="projetos" class="section">
-        <div class="container">
-            <div class="section-title text-center" data-aos="fade-up">
-                <h2>Projetos</h2>
-                <p>Conheça alguns dos meus principais projetos</p>
-            </div>
-
-            <!-- Projeto 1: Sistema Integrado -->
-            <div class="projeto-item" data-aos="fade-up">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="projeto-info">
-                            <h3>Sistema Integrado - Gestão Empresarial</h3>
-                            <p>Sistema completo de gerenciamento empresarial, integrando todas as operações e proporcionando uma visão unificada dos processos.</p>
-                            
-                            <div class="features-list mt-4">
-                                <h5>Principais Funcionalidades:</h5>
-                                <ul>
-                                    <li><i class="fas fa-check me-2"></i> Gestão de clientes e contratos</li>
-                                    <li><i class="fas fa-check me-2"></i> Controle financeiro e faturamento</li>
-                                    <li><i class="fas fa-check me-2"></i> Relatórios e dashboards analíticos</li>
-                                    <li><i class="fas fa-check me-2"></i> Integração com sistemas e tecnologias externas</li>
-                                </ul>
-                            </div>
-
-                            <div class="projeto-tags mt-4">
-                                <span class="badge bg-primary">Python</span>
-                                <span class="badge bg-success">Django</span>
-                                <span class="badge bg-info">PostgreSQL</span>
-                                <span class="badge bg-warning">API</span>
-                                <span class="badge bg-danger">AWS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="projeto-gallery mt-4 mt-lg-0">
-                            <div id="carouselSistemaInt" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="static/images/goldensar001.png" class="d-block w-100" alt="Sistema Integrado Dashboard">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="static/images/goldensat01.png" class="d-block w-100" alt="Sistema Integrado Clientes">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="static/images/goldensat0001.png" class="d-block w-100" alt="Sistema Integrado Relatórios">
-                                    </div>
+                            <div class="skill-info">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselSistemaInt" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselSistemaInt" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item" data-skill="Vue.js" data-level="85">
+                            <div class="skill-icon">
+                                <i class="bi bi-braces"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Vue.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item" data-skill="Angular" data-level="80">
+                            <div class="skill-icon">
+                                <i class="bi bi-braces"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Angular</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Projeto 2: Sistema de Vouchers -->
-            <div class="projeto-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="projeto-info">
-                            <h3>GS-Voucher - Sistema de Gestão de Vouchers</h3>
-                            <p>Plataforma completa para gerenciamento de vouchers e controle de rotas, desenvolvida para otimizar operações logísticas e monitoramento de entregas.</p>
-                            
-                            <div class="features-list mt-4">
-                                <h5>Principais Funcionalidades:</h5>
-                                <ul>
-                                    <li><i class="fas fa-check me-2"></i> Dashboard interativo com métricas em tempo real</li>
-                                    <li><i class="fas fa-check me-2"></i> Geração e gestão de vouchers</li>
-                                    <li><i class="fas fa-check me-2"></i> Controle de rotas e monitoramento</li>
-                                    <li><i class="fas fa-check me-2"></i> Relatórios e análises detalhadas</li>
-                                </ul>
+                
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="category-title">Backend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item" data-skill="Node.js" data-level="95">
+                            <div class="skill-icon">
+                                <i class="bi bi-server"></i>
                             </div>
-
-                            <div class="projeto-tags mt-4">
-                                <span class="badge bg-primary">React</span>
-                                <span class="badge bg-success">Node.js</span>
-                                <span class="badge bg-warning">API</span>
-                                <span class="badge bg-warning">Express</span>
-                                <span class="badge bg-danger">Redis</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="projeto-gallery mt-4 mt-lg-0">
-                            <div id="carouselVouchers" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="static/images/voucher001.png" class="d-block w-100" alt="Vouchers Dashboard">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="static/images/voucher01.png" class="d-block w-100" alt="Lista de Vouchers">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="static/images/voucher0001.png" class="d-block w-100" alt="Criar Voucher">
-                                    </div>
+                        
+                        <div class="skill-item" data-skill="Python" data-level="90">
+                            <div class="skill-icon">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselVouchers" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselVouchers" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item" data-skill="Laravel" data-level="85">
+                            <div class="skill-icon">
+                                <i class="bi bi-server"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Laravel</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Projeto 3: Sistema de Acionamentos -->
-            <div class="projeto-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="projeto-info">
-                            <h3>Sistema de Acionamento e Monitoramento</h3>
-                            <p>Sistema avançado de rastreamento e monitoramento em tempo real, com integração de mapas e controle de frotas, permitindo acionamentos remotos e gestão eficiente de equipamentos.</p>
-                            
-                            <div class="features-list mt-4">
-                                <h5>Principais Funcionalidades:</h5>
-                                <ul>
-                                    <li><i class="fas fa-check me-2"></i> Monitoramento em tempo real</li>
-                                    <li><i class="fas fa-check me-2"></i> Acionamento remoto de dispositivos</li>
-                                    <li><i class="fas fa-check me-2"></i> Gestão de frotas e equipamentos</li>
-                                    <li><i class="fas fa-check me-2"></i> Alertas e notificações automáticas</li>
-                                </ul>
+                
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="category-title">Database</h3>
+                    <div class="skills-list">
+                        <div class="skill-item" data-skill="PostgreSQL" data-level="90">
+                            <div class="skill-icon">
+                                <i class="bi bi-database"></i>
                             </div>
-
-                            <div class="projeto-tags mt-4">
-                                <span class="badge bg-primary">Python</span>
-                                <span class="badge bg-success">Django</span>
-                                <span class="badge bg-info">PostgreSQL</span>
-                                <span class="badge bg-warning">WebSocket</span>
-                                <span class="badge bg-warning">API</span>
+                            <div class="skill-info">
+                                <span class="skill-name">PostgreSQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="projeto-gallery mt-4 mt-lg-0">
-                            <div id="carouselAcionamentos" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="static/images/acionamentos001.png" class="d-block w-100" alt="Acionamentos Dashboard">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="static/images/acionamentos01.png" class="d-block w-100" alt="Mapa de Acionamentos">
-                                    </div>
-                                    
+                        
+                        <div class="skill-item" data-skill="MongoDB" data-level="85">
+                            <div class="skill-icon">
+                                <i class="bi bi-database"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">MongoDB</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselAcionamentos" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselAcionamentos" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item" data-skill="Redis" data-level="80">
+                            <div class="skill-icon">
+                                <i class="bi bi-database"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Redis</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -363,37 +346,232 @@
         </div>
     </section>
 
-    <!-- Contato Section -->
-    <section id="contato" class="py-5 bg-light">
+    <!-- Projects Section -->
+    <section id="projetos" class="projects-section">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Entre em Contato</h2>
-                    <div class="divider"></div>
-                    <p class="lead">Vamos conversar sobre seu projeto.</p>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Projetos</h2>
+                <p class="section-subtitle">Alguns dos meus trabalhos mais recentes</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="static/images/goldensar001.png" alt="Sistema Integrado">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
+                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema Integrado</h3>
+                        <p class="project-description">Sistema completo de gestão empresarial com integração de processos.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="static/images/voucher001.png" alt="GS Voucher">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
+                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">GS Voucher</h3>
+                        <p class="project-description">Sistema de gestão de vouchers e controle de rotas.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="static/images/acionamentos001.png" alt="Sistema Acionamentos">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
+                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema Acionamentos</h3>
+                        <p class="project-description">Monitoramento em tempo real e acionamento remoto.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="static/images/gs-controller.png" alt="GS Controller">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
+                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">GS Controller</h3>
+                        <p class="project-description">Sistema de controle e monitoramento de eventos.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 5 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <img src="static/images/cass-cassinos.png" alt="Cass Cassinos">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
+                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cass Cassinos</h3>
+                        <p class="project-description">Sistema de controle e gestão para cassinos.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 6 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <img src="static/images/gs-deskcontrol.png" alt="GS DeskControl">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
+                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">GS DeskControl</h3>
+                        <p class="project-description">Sistema de gestão de locais e responsáveis.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-          
-            <div class="row mt-5">
-                <div class="col-md-4 mb-4 text-center">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Contato</h2>
+                <p class="section-subtitle">Vamos trabalhar juntos!</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
                     <div class="contact-info">
-                        <i class="bi bi-envelope-fill contact-icon"></i>
-                        <h4>Email</h4>
-                        <p>sjuniorr6@gmail.com</p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>sjuniorr6@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Telefone</h4>
+                                <p>+55 (11) 987487342</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Localização</h4>
+                                <p>São Paulo, SP - Brasil</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/sidnei-junior-115962207/" target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/Sjuniorr6" target="_blank" class="social-link"><i class="bi bi-github"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 text-center">
-                    <div class="contact-info">
-                        <i class="bi bi-telephone-fill contact-icon"></i>
-                        <h4>Telefone</h4>
-                        <p>+55 (11) 987487342</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4 text-center">
-                    <div class="contact-info">
-                        <i class="bi bi-geo-alt-fill contact-icon"></i>
-                        <h4>Localização</h4>
-                        <p>São Paulo, SP - Brasil</p>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Nome</label>
+                                <div class="form-line"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email</label>
+                                <div class="form-line"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">Mensagem</label>
+                                <div class="form-line"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-glow">
+                                <span>Enviar Mensagem</span>
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -401,34 +579,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>SJR - Portfólio</h4>
-                    <p>Desenvolvedor Full Stack apaixonado por criar soluções web inovadoras e funcionais.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>SJR</span>
+                    <p>Desenvolvedor Full Stack</p>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="social-links">
-                        <a href="https://github.com/Sjuniorr6" class="text-white me-3"><i class="bi bi-github"></i></a>
-                        <a href="https://www.linkedin.com/in/sidnei-junior-115962207/" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                       
-                        
-                    </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#habilidades">Habilidades</a>
+                    <a href="#projetos">Projetos</a>
+                    <a href="#contato">Contato</a>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-12 text-center">
-                    <p class="mb-0">&copy; 2025 SJR - Portfólio. Todos os direitos reservados.</p>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sidnei Junior. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
