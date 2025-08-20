@@ -1,204 +1,230 @@
 // ===== GLOBAL VARIABLES =====
-let typewriterIndex = 0;
-let typewriterTexts = [
-    'experiências digitais',
-    'soluções inovadoras',
-    'aplicações web',
-    'sistemas inteligentes'
-];
+/**
+ * Variáveis globais para controle de animações e estado da aplicação
+ * @type {number} currentLine - Linha atual sendo animada
+ * @type {boolean} isTyping - Indica se está ocorrendo animação de digitação
+ * @type {boolean} cursorVisible - Controla visibilidade do cursor
+ */
+let currentLine = 0;
+let isTyping = false;
+let cursorVisible = true;
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
-    
-
 });
 
+/**
+ * Função principal de inicialização da aplicação
+ * Configura todos os componentes e funcionalidades do portfolio
+ * @function initializeApp
+ * @returns {void}
+ */
+// Variável para controlar se já foi inicializado
+let isAppInitialized = false;
+
 function initializeApp() {
-    // Initialize all components
-    initLoadingScreen();
-    initNavbar();
-    initTypewriter();
-    initHeroAnimations();
-    initSkillsAnimation();
-    initContactForm();
-    initScrollAnimations();
-    initParticleEffects();
-    initCustomCursor();
-    initAOS();
-    initMobileMenu();
+    // Evitar inicialização duplicada
+    if (isAppInitialized) {
+        console.warn('⚠️ App já foi inicializado');
+        return;
+    }
     
-    console.log('🚀 Portfolio inicializado com sucesso!');
+    try {
+        // Inicializa todos os componentes da aplicação
+        // Só inicializa loading screen se o elemento existir
+        if (document.getElementById('loading-screen')) {
+            initLoadingScreen();
+        }
+        initNavbar();             // Navegação responsiva
+        initCodeAnimations();     // Animações dos editores de código
+        initScrollAnimations();   // Animações baseadas em scroll
+        initMobileMenu();         // Menu mobile
+        initCursorEffect();       // Efeitos de cursor personalizado
+        initParticleEffect();     // Efeito de partículas no fundo
+        initNavbarScroll();       // Navbar que desce com scroll
+        
+        isAppInitialized = true;
+        console.log('🚀 Portfolio Code Editor inicializado com sucesso!');
+    } catch (error) {
+        console.error('❌ Erro ao inicializar app:', error);
+    }
+}
+
+// Função para resetar o estado da aplicação
+function resetAppState() {
+    isAppInitialized = false;
+    console.log('🔄 Estado da aplicação resetado');
 }
 
 // ===== LOADING SCREEN =====
 function initLoadingScreen() {
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    // Simulate loading time
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
+    try {
+        const loadingScreen = document.getElementById('loading-screen');
         
-        // Remove from DOM after animation
+        // Se não há loading screen, simplesmente retorna sem erro
+        if (!loadingScreen) {
+            console.log('ℹ️ Loading screen não encontrada - pulando inicialização');
+            return;
+        }
+        
+        // Verificar se o elemento ainda existe no DOM
+        if (!document.body.contains(loadingScreen)) {
+            console.log('ℹ️ Loading screen removida do DOM - pulando');
+            return;
+        }
+        
+        // Verificar se já foi inicializada
+        if (loadingScreen.classList && loadingScreen.classList.contains('hidden')) {
+            console.log('ℹ️ Loading screen já foi inicializada - pulando');
+            return;
+        }
+        
+        // Simulate loading time
         setTimeout(() => {
-            loadingScreen.remove();
-        }, 500);
-    }, 2000);
+            try {
+                // Verificar novamente se o elemento ainda existe
+                if (loadingScreen && document.body.contains(loadingScreen) && loadingScreen.classList) {
+                    loadingScreen.classList.add('hidden');
+                    
+                    // Remove from DOM after animation
+                    setTimeout(() => {
+                        try {
+                            if (loadingScreen && loadingScreen.parentNode && document.body.contains(loadingScreen)) {
+                                loadingScreen.remove();
+                            }
+                        } catch (removeError) {
+                            console.log('ℹ️ Loading screen já removida');
+                        }
+                    }, 500);
+                }
+            } catch (classListError) {
+                console.log('ℹ️ Loading screen já processada');
+            }
+        }, 2000);
+    } catch (error) {
+        console.log('ℹ️ Loading screen não disponível');
+    }
 }
 
 // ===== NAVBAR =====
 function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    try {
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Se não há navbar, simplesmente retorna
+        if (!navbar) {
+            console.log('ℹ️ Navbar não encontrada - pulando inicialização');
+            return;
         }
-    });
-    
-    // Smooth scrolling for nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            try {
+                if (navbar && navbar.classList) {
+                    if (window.scrollY > 100) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+            } catch (scrollError) {
+                console.log('ℹ️ Erro no scroll da navbar');
             }
         });
-    });
+        
+        // Smooth scrolling for nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                try {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                } catch (linkError) {
+                    console.log('ℹ️ Erro no link de navegação');
+                }
+            });
+        });
     
     // Active nav link highlighting
     window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollPos = window.scrollY + 100;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+        try {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + 100;
             
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    });
-}
-
-// ===== TYPEWRITER EFFECT =====
-function initTypewriter() {
-    const typewriterElement = document.getElementById('typewriter');
-    if (!typewriterElement) return;
-    
-    function typeWriter() {
-        const currentText = typewriterTexts[typewriterIndex];
-        let charIndex = 0;
-        
-        function typeChar() {
-            if (charIndex < currentText.length) {
-                typewriterElement.textContent += currentText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeChar, 100);
-            } else {
-                setTimeout(eraseText, 2000);
-            }
-        }
-        
-        function eraseText() {
-            if (typewriterElement.textContent.length > 0) {
-                typewriterElement.textContent = typewriterElement.textContent.slice(0, -1);
-                setTimeout(eraseText, 50);
-            } else {
-                typewriterIndex = (typewriterIndex + 1) % typewriterTexts.length;
-                setTimeout(typeWriter, 500);
-            }
-        }
-        
-        typewriterElement.textContent = '';
-        typeChar();
-    }
-    
-    typeWriter();
-}
-
-// ===== HERO ANIMATIONS =====
-function initHeroAnimations() {
-    // Hero animations can be added here in the future
-    console.log('Hero animations initialized');
-}
-
-// ===== SKILLS ANIMATION =====
-function initSkillsAnimation() {
-    const skillItems = document.querySelectorAll('.skill-item');
-    
-    const animateSkills = () => {
-        skillItems.forEach((item, index) => {
-            const progressBar = item.querySelector('.skill-progress');
-            const width = progressBar.getAttribute('data-width');
-            
-            setTimeout(() => {
-                progressBar.style.width = width;
-            }, index * 200);
-        });
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkills();
-                observer.unobserve(entry.target);
-            }
-        });
-    });
-    
-    const skillsSection = document.getElementById('habilidades');
-    if (skillsSection) {
-        observer.observe(skillsSection);
-    }
-}
-
-
-
-
-
-// ===== CONTACT FORM =====
-function initContactForm() {
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission
-            showNotification('Mensagem enviada com sucesso!', 'success');
-            form.reset();
-            
-            // Reset form labels
-            const labels = form.querySelectorAll('label');
-            labels.forEach(label => {
-                label.style.top = 'var(--space-4)';
-                label.style.fontSize = 'var(--font-size-base)';
-                label.style.color = 'var(--gray-500)';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
             });
-        });
+        } catch (highlightError) {
+            console.log('ℹ️ Erro no highlight da navegação');
+        }
+    });
+    } catch (error) {
+        console.log('ℹ️ Erro ao inicializar navbar');
     }
 }
+
+// ===== CODE ANIMATIONS =====
+/**
+ * Inicializa as animações dos editores de código
+ * Cria efeitos de entrada escalonada e interações de hover
+ * @function initCodeAnimations
+ * @returns {void}
+ */
+function initCodeAnimations() {
+    const codeEditors = document.querySelectorAll('.code-editor');
+    
+    codeEditors.forEach((editor, editorIndex) => {
+        const codeLines = editor.querySelectorAll('.code-line');
+        
+        // Anima cada linha com entrada escalonada (staggered entrance)
+        codeLines.forEach((line, lineIndex) => {
+            // Configura estado inicial (invisível e deslocado)
+            line.style.opacity = '0';
+            line.style.transform = 'translateX(-20px)';
+            
+            // Agenda animação com delay baseado na posição
+            setTimeout(() => {
+                line.style.transition = 'all 0.5s ease';
+                line.style.opacity = '1';
+                line.style.transform = 'translateX(0)';
+            }, editorIndex * 500 + lineIndex * 100); // Delay progressivo
+        });
+        
+        // Adiciona efeitos de hover no editor de código
+        editor.addEventListener('mouseenter', () => {
+            editor.style.transform = 'scale(1.02)'; // Aumenta ligeiramente
+            editor.style.transition = 'transform 0.3s ease';
+        });
+        
+        editor.addEventListener('mouseleave', () => {
+            editor.style.transform = 'scale(1)'; // Retorna ao tamanho normal
+        });
+    });
+}
+
+
+
+
 
 // ===== SCROLL ANIMATIONS =====
 function initScrollAnimations() {
@@ -212,97 +238,50 @@ function initScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                
+                // Add special effects for different elements
+                if (entry.target.classList.contains('code-editor')) {
+                    entry.target.style.boxShadow = '0 8px 32px rgba(0, 122, 204, 0.3)';
+                    entry.target.style.animation = 'glow 2s ease-in-out infinite';
+                }
+                
+                if (entry.target.classList.contains('nav-link')) {
+                    entry.target.style.animation = 'bounce 0.6s ease-in-out';
+                }
+                
+                if (entry.target.classList.contains('profile-photo')) {
+                    entry.target.style.animation = 'float 6s ease-in-out infinite, pulse 4s ease-in-out infinite';
+                }
             }
         });
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .contact-item');
+    const animatedElements = document.querySelectorAll('.code-editor, .nav-link, .profile-photo, .footer-content');
     
-    animatedElements.forEach(el => {
+    animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease, box-shadow 0.8s ease';
+        el.style.animationDelay = `${index * 0.1}s`;
         observer.observe(el);
     });
 }
 
-// ===== PARTICLE EFFECTS =====
-function initParticleEffects() {
-    const heroSection = document.getElementById('home');
-    if (!heroSection) return;
-    
-    // Create floating particles
-    for (let i = 0; i < 20; i++) {
-        createParticle(heroSection);
-    }
-}
-
-function createParticle(container) {
-    const particle = document.createElement('div');
-    particle.className = 'floating-particle';
-    
-    // Random properties
-    const size = Math.random() * 4 + 2;
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const duration = Math.random() * 20 + 10;
-    const delay = Math.random() * 5;
-    
-    particle.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        background: rgba(99, 102, 241, 0.3);
-        border-radius: 50%;
-        left: ${x}%;
-        top: ${y}%;
-        animation: float-particle ${duration}s ease-in-out infinite;
-        animation-delay: ${delay}s;
-        pointer-events: none;
-    `;
-    
-    container.appendChild(particle);
-}
-
-// Add CSS animation for particles
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes float-particle {
-        0%, 100% {
-            transform: translateY(0px) translateX(0px);
-            opacity: 0.3;
-        }
-        25% {
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.7;
-        }
-        50% {
-            transform: translateY(-10px) translateX(-10px);
-            opacity: 0.5;
-        }
-        75% {
-            transform: translateY(-30px) translateX(5px);
-            opacity: 0.8;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// ===== CUSTOM CURSOR =====
-function initCustomCursor() {
+// ===== CURSOR EFFECT =====
+function initCursorEffect() {
+    // Create custom cursor for code editor feel
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     cursor.style.cssText = `
         position: fixed;
-        width: 20px;
+        width: 2px;
         height: 20px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
+        background: var(--accent-blue);
         pointer-events: none;
         z-index: 9999;
         transition: transform 0.1s ease;
-        mix-blend-mode: difference;
+        opacity: 0;
     `;
     
     document.body.appendChild(cursor);
@@ -315,64 +294,68 @@ function initCustomCursor() {
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        cursor.style.opacity = '1';
     });
     
     function updateCursor() {
         cursorX += (mouseX - cursorX) * 0.1;
         cursorY += (mouseY - cursorY) * 0.1;
         
-        cursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px)`;
+        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
         requestAnimationFrame(updateCursor);
     }
     
     updateCursor();
     
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+    
     // Cursor effects on hover
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-item');
+    const hoverElements = document.querySelectorAll('.code-editor, .nav-link, .control');
     
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px) scale(2)`;
+            cursor.style.width = '4px';
+            cursor.style.height = '24px';
+            cursor.style.background = 'var(--accent-green)';
         });
         
         el.addEventListener('mouseleave', () => {
-            cursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px) scale(1)`;
+            cursor.style.width = '2px';
+            cursor.style.height = '20px';
+            cursor.style.background = 'var(--accent-blue)';
         });
     });
-}
-
-// ===== AOS INITIALIZATION =====
-function initAOS() {
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
-    }
 }
 
 // ===== MOBILE MENU =====
 function initMobileMenu() {
     const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navMenu = document.querySelector('.nav-menu');
     
-    if (mobileMenuIcon && navbarCollapse) {
+    if (mobileMenuIcon && navMenu) {
         mobileMenuIcon.addEventListener('click', () => {
             const isActive = mobileMenuIcon.classList.contains('active');
             
             if (isActive) {
-                // If menu is open (X is visible), close it
+                // Close menu
                 mobileMenuIcon.classList.remove('active');
-                navbarCollapse.style.transition = 'all 0.3s ease';
-                setTimeout(() => {
-                    navbarCollapse.classList.remove('show');
-                }, 100);
+                navMenu.style.display = 'none';
             } else {
-                // If menu is closed (hamburger is visible), open it
+                // Open menu
                 mobileMenuIcon.classList.add('active');
-                navbarCollapse.classList.add('show');
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = 'var(--bg-secondary)';
+                navMenu.style.borderTop = '1px solid var(--border-color)';
+                navMenu.style.padding = 'var(--space-4)';
+                navMenu.style.zIndex = '1000';
             }
         });
         
@@ -381,15 +364,15 @@ function initMobileMenu() {
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenuIcon.classList.remove('active');
-                navbarCollapse.classList.remove('show');
+                navMenu.style.display = 'none';
             });
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!mobileMenuIcon.contains(e.target) && !navbarCollapse.contains(e.target)) {
+            if (!mobileMenuIcon.contains(e.target) && !navMenu.contains(e.target)) {
                 mobileMenuIcon.classList.remove('active');
-                navbarCollapse.classList.remove('show');
+                navMenu.style.display = 'none';
             }
         });
         
@@ -397,10 +380,32 @@ function initMobileMenu() {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenuIcon.classList.contains('active')) {
                 mobileMenuIcon.classList.remove('active');
-                navbarCollapse.classList.remove('show');
+                navMenu.style.display = 'none';
             }
         });
     }
+}
+
+
+
+// ===== NAVBAR SCROLL =====
+function initNavbarScroll() {
+    const navbar = document.getElementById('navbar');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down - hide navbar
+            navbar.classList.add('navbar-hidden');
+        } else {
+            // Scrolling up - show navbar
+            navbar.classList.remove('navbar-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
 }
 
 // ===== UTILITY FUNCTIONS =====
@@ -412,13 +417,15 @@ function showNotification(message, type = 'info') {
         top: 20px;
         right: 20px;
         padding: 15px 20px;
-        background: ${type === 'success' ? 'var(--success)' : 'var(--primary)'};
-        color: white;
-        border-radius: var(--radius-lg);
+        background: ${type === 'success' ? 'var(--accent-green)' : 'var(--accent-blue)'};
+        color: var(--text-primary);
+        border-radius: 4px;
         box-shadow: var(--shadow-lg);
         z-index: 10000;
         transform: translateX(100%);
         transition: transform 0.3s ease;
+        font-family: var(--font-mono);
+        font-size: var(--font-size-sm);
     `;
     
     notification.textContent = message;
@@ -447,8 +454,6 @@ function scrollToSection(sectionId) {
         });
     }
 }
-
-
 
 // ===== PERFORMANCE OPTIMIZATION =====
 // Throttle scroll events
@@ -551,15 +556,16 @@ function trackEvent(eventName, properties = {}) {
 
 // Track important interactions
 document.addEventListener('click', (e) => {
-    if (e.target.matches('.project-link')) {
-        trackEvent('project_view', {
-            project: e.target.closest('.project-card')?.querySelector('.project-title')?.textContent
+    if (e.target.matches('.nav-link')) {
+        trackEvent('navigation_click', {
+            section: e.target.getAttribute('href')
         });
     }
     
-    if (e.target.matches('.social-link')) {
-        trackEvent('social_click', {
-            platform: e.target.querySelector('i').className
+    if (e.target.matches('.control')) {
+        trackEvent('editor_control_click', {
+            control: e.target.classList.contains('close') ? 'close' : 
+                    e.target.classList.contains('minimize') ? 'minimize' : 'maximize'
         });
     }
 });
@@ -571,4 +577,110 @@ window.portfolioApp = {
     trackEvent
 };
 
-console.log('🎨 Portfolio carregado com todas as funcionalidades!');
+
+
+// ===== PARTICLE EFFECT =====
+/**
+ * Inicializa o efeito de partículas no fundo da página
+ * Cria um canvas com partículas animadas para dar movimento ao background
+ * @function initParticleEffect
+ * @returns {void}
+ */
+function initParticleEffect() {
+    // Cria o elemento canvas para renderização das partículas
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.3;
+    `;
+    document.body.appendChild(canvas);
+    
+    // Configura o contexto 2D e dimensões do canvas
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const particleCount = 50; // Número de partículas no fundo
+    
+    /**
+     * Classe que representa uma partícula individual
+     * Controla posição, velocidade, tamanho e cor
+     */
+    class Particle {
+        constructor() {
+            // Posição inicial aleatória
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            
+            // Velocidade aleatória (direção e magnitude)
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            
+            // Tamanho aleatório entre 1 e 3 pixels
+            this.size = Math.random() * 2 + 1;
+            
+            // Cor aleatória em tons de azul/ciano
+            this.color = `hsl(${Math.random() * 60 + 200}, 70%, 60%)`;
+        }
+        
+        /**
+         * Atualiza a posição da partícula e verifica colisões com bordas
+         */
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Inverte direção ao atingir as bordas do canvas
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+        
+        /**
+         * Desenha a partícula no canvas
+         */
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    
+    // Cria e adiciona partículas ao array
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+    
+    /**
+     * Função de animação principal
+     * Limpa o canvas e atualiza/desenha todas as partículas
+     */
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
+        
+        // Atualiza e desenha cada partícula
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        
+        requestAnimationFrame(animate); // Agenda próximo frame
+    }
+    
+    animate(); // Inicia a animação
+    
+    // Handler para redimensionamento da janela
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+console.log('🎨 Portfolio Code Editor carregado com todas as funcionalidades!');

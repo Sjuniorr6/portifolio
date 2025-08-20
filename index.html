@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidnei Junior - Desenvolvedor Full Stack</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&family=Pacifico:wght@400&family=Righteous:wght@400&display=swap" rel="stylesheet">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Layout Manager -->
+    <script src="js/layoutManager.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -32,179 +30,468 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
                 <span class="brand-text">SJR</span>
                 <span class="brand-subtitle">Portfolio</span>
-            </a>
-            
-                            <button class="mobile-menu-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sobre">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#habilidades">Habilidades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projetos">Projetos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contato">Contato</a>
-                    </li>
-                </ul>
             </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#habilidades" class="nav-link">Habilidades</a>
+                <a href="#projetos" class="nav-link">Projetos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <button id="layoutToggle" class="nav-link layout-toggle">Layout Usuário</button>
+            </div>
+            
+            <button class="mobile-menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-background">
-            <div class="hero-particles"></div>
-            <div class="hero-grid"></div>
-        </div>
-        
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="hero-content">
-                        <div class="hero-badge">
-                            <i class="bi bi-code-slash"></i>
-                            <span>Desenvolvedor Full Stack</span>
-                        </div>
-                        
-                        <h1 class="hero-title">
-                            <span class="hero-greeting">Olá, meu nome é</span>
-                            <span class="hero-name">Sidnei</span>
-                        </h1>
-                        
-                        <p class="hero-subtitle">
-                            Transformando ideias em <span class="typewriter" id="typewriter"></span>
-                        </p>
-                        
-                        <p class="hero-description">
-                            Desenvolvedor apaixonado por criar soluções inovadoras e experiências digitais excepcionais.
-                        </p>
-                        
-                        <div class="hero-buttons">
-
-                        </div>
-                    </div>
+        <div class="hero-container">
+            <!-- Profile Image -->
+            <div class="profile-image-container">
+                <img src="static/images/portifolio.jpg" alt="Sidnei Junior" class="profile-photo">
+            </div>
+            
+            <!-- Unified Code Editor -->
+            <div class="code-editor hero-editor">
+            <div class="editor-header">
+                <div class="editor-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                </div>
+                    <div class="file-tab">Profile.java</div>
+            </div>
+            
+            <div class="editor-content">
+                <div class="line-numbers">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                    <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+                        <span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                        <span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span>
+                        <span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span>
+                        <span>61</span><span>62</span><span>63</span><span>64</span><span>65</span><span>66</span><span>67</span><span>68</span><span>69</span><span>70</span>
+                        <span>71</span><span>72</span><span>73</span><span>74</span><span>75</span><span>76</span><span>77</span><span>78</span><span>79</span><span>80</span>
                 </div>
                 
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="hero-visual">
-                        <div class="profile-container">
-                            <div class="profile-image">
-                                <img src="static/images/portifolio.jpg" alt="Sidnei Junior">
-                            </div>
-                            <div class="profile-glow"></div>
-                            <div class="floating-elements">
-                                <div class="floating-icon" style="--delay: 0s">
-                                    <i class="bi bi-react"></i>
-                                </div>
-                                <div class="floating-icon" style="--delay: 1s">
-                                    <i class="bi bi-braces"></i>
-                                </div>
-                                <div class="floating-icon" style="--delay: 2s">
-                                    <i class="bi bi-database"></i>
-                                </div>
-                                <div class="floating-icon" style="--delay: 3s">
-                                    <i class="bi bi-gear"></i>
-                                </div>
-                            </div>
+                <div class="code-content">
+                    <div class="code-line">
+                            <span class="comment">/// Desenvolvedor Full Stack disponível para projetos</span>
                         </div>
+                        <div class="code-line">
+                            <span class="comment">/// Especialista em Java, Python, React e Node.js</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="comment">/// </summary></span>
+                    </div>
+                        <div class="code-line"></div>
+                    <div class="code-line">
+                        <span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">INFORMATION</span> {
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">string</span> <span class="variable">NOM</span> = <span class="string">"SIDNEI JUNIOR"</span>;
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">string</span> <span class="variable">TITRE</span> = <span class="string">"Desenvolvedor Full Stack"</span>;
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">string</span> <span class="variable">EMAIL</span> = <span class="string">"sjuniorr6@gmail.com"</span>;
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">int</span> <span class="variable">TÉLÉPHONE</span> = <span class="number">11987487342</span>;
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">string</span>[] <span class="variable">POSITION</span> = {<span class="string">"São Paulo"</span>, <span class="string">"SP"</span>, <span class="string">"Brasil"</span>};
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">bool</span> <span class="variable">PERMIS_B_VÉHICULÉ</span> = <span class="keyword">true</span>;
+                    </div>
+                    <div class="code-line indent-1">
+                        <span class="keyword">public</span> <span class="type">int</span> <span class="variable">ÂGE</span> = <span class="number">25</span>;
+                    </div>
+                    <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name pessoa">Pessoa</span> <span class="keyword">implements</span> <span class="class-name">Serializable</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> = <span class="number">1L</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">String</span> <span class="variable">nome</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">String</span> <span class="variable">titre</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">String</span> <span class="variable">email</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">String</span> <span class="variable">telefone</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">String</span>[] <span class="variable">position</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="variable">skills</span> = <span class="keyword">new</span> <span class="class-name">ArrayList</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Object</span>&gt; <span class="variable">metadata</span> = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line"></div>
+                        <div class="code-line indent-1">
+                            <span class="comment">// Construtor padrão</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="class-name pessoa">Pessoa</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">nome</span> = <span class="string">"Sidnei Junior"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">titre</span> = <span class="string">"Desenvolvedor Full Stack"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">email</span> = <span class="string">"sjuniorr6@gmail.com"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">telefone</span> = <span class="string">"11987487342"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">position</span> = <span class="keyword">new</span> <span class="type">String</span>[]{<span class="string">"São Paulo"</span>, <span class="string">"SP"</span>, <span class="string">"Brasil"</span>};
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line indent-1">
+                            <span class="comment">// Construtor parametrizado</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="class-name pessoa">Pessoa</span>(<span class="type">String</span> <span class="variable">nome</span>, <span class="type">String</span> <span class="variable">titre</span>, <span class="type">String</span> <span class="variable">email</span>, <span class="type">String</span> <span class="variable">telefone</span>, <span class="type">String</span>[] <span class="variable">position</span>) {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">nome</span> = <span class="variable">nome</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">titre</span> = <span class="variable">titre</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">email</span> = <span class="variable">email</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">telefone</span> = <span class="variable">telefone</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">position</span> = <span class="variable">position</span>;
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">void</span> <span class="method">addSkill</span>(<span class="type">String</span> <span class="variable">skill</span>) {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">this</span>.<span class="variable">skills</span>.<span class="method">add</span>(<span class="variable">skill</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">@Override</span>
+                </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="type">String</span> <span class="method">toString</span>() {
+            </div>
+                        <div class="code-line indent-2">
+                            <span class="keyword">return</span> <span class="string">"Pessoa{"</span> + <span class="string">"nome='"</span> + <span class="variable">nome</span> + <span class="string">"', titre='"</span> + <span class="variable">titre</span> + <span class="string">"'}"</span>;
+        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="comment">// Instanciação e uso da classe Pessoa</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="class-name pessoa">Pessoa</span> <span class="variable instance">p</span> = <span class="keyword">new</span> <span class="class-name pessoa">Pessoa</span>(<span class="string">"Sidnei Junior"</span>, <span class="string">"Desenvolvedor Full Stack"</span>, <span class="string">"sjuniorr6@gmail.com"</span>, <span class="string">"11987487342"</span>, <span class="keyword">new</span> <span class="type">String</span>[]{<span class="string">"São Paulo"</span>, <span class="string">"SP"</span>, <span class="string">"Brasil"</span>});
+                        </div>
+                        <div class="code-line">
+                            <span class="variable instance">p</span>.<span class="method">addSkill</span>(<span class="string">"Java"</span>);
+                        </div>
+                        <div class="code-line">
+                            <span class="variable instance">p</span>.<span class="method">addSkill</span>(<span class="string">"Python"</span>);
+                        </div>
+                        <div class="code-line">
+                            <span class="variable instance">p</span>.<span class="method">addSkill</span>(<span class="string">"React"</span>);
+        </div>
+                        <div class="code-line">
+                            <span class="variable instance">p</span>.<span class="variable">metadata</span>.<span class="method">put</span>(<span class="string">"experience"</span>, <span class="number">3</span>);
+                    </div>
+                        <div class="code-line">
+                            <span class="variable instance">p</span>.<span class="variable">metadata</span>.<span class="method">put</span>(<span class="string">"available"</span>, <span class="keyword">true</span>);
+                </div>
+                        <div class="code-line">
+                            <span class="keyword">System</span>.<span class="keyword">out</span>.<span class="method">println</span>(<span class="variable instance">p</span>.<span class="method">toString</span>());
+                    </div>
+                        <div class="code-line"></div>
+                    
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">PLATEFORMES</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">WINDOWS</span>, <span class="enum-value">LINUX</span>, <span class="enum-value">MOBILE</span>
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">LANGAGES</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">JAVA</span>, <span class="enum-value">PYTHON</span>, <span class="enum-value">JAVASCRIPT</span>, <span class="enum-value">REACT</span>, <span class="enum-value">VUE_JS</span>, <span class="enum-value">ANGULAR</span>, <span class="enum-value">NODE_JS</span>, <span class="enum-value">DJANGO</span>, <span class="enum-value">LARAVEL</span>, <span class="enum-value">HTML5</span>, <span class="enum-value">CSS3</span>, <span class="enum-value">SQL</span>
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">LOGICIELS</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">INTELLIJ_IDEA</span>, <span class="enum-value">VSCODE</span>, <span class="enum-value">GIT</span>, <span class="enum-value">DOCKER</span>, <span class="enum-value">AWS</span>, <span class="enum-value">POWERBI</span>, <span class="enum-value">POSTGRESQL</span>, <span class="enum-value">MONGODB</span>, <span class="enum-value">REDIS</span>
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">MÉDIA</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">LINKEDIN</span>(<span class="string">"linkedin.com/in/sidnei-junior"</span>),
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">GITHUB</span>(<span class="string">"github.com/Sjuniorr6"</span>),
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">EMAIL</span>(<span class="string">"sjuniorr6@gmail.com"</span>);
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">url</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="class-name">MÉDIA</span>(<span class="type">String</span> <span class="variable">url</span>) { <span class="keyword">this</span>.<span class="variable">url</span> = <span class="variable">url</span>; }
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">LANGUES</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">PORTUGUÊS</span>(<span class="string">"Nativo"</span>),
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">ENGLISH</span>(<span class="string">"Intermediario"</span>),
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">SPANISH</span>(<span class="string">"Intermediario"</span>);
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">niveau</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="class-name">LANGUES</span>(<span class="type">String</span> <span class="variable">niveau</span>) { <span class="keyword">this</span>.<span class="variable">niveau</span> = <span class="variable">niveau</span>; }
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">PROFIL</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">CURIEUX</span>, <span class="enum-value">PONCTUEL</span>, <span class="enum-value">RIGOUREUX</span>
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">EMAIL</span>(<span class="string">"sjuniorr6@gmail.com"</span>);
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">url</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="class-name">MÉDIA</span>(<span class="type">String</span> <span class="variable">url</span>) { <span class="keyword">this</span>.<span class="variable">url</span> = <span class="variable">url</span>; }
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">LANGUES</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">PORTUGUÊS</span>(<span class="string">"Nativo"</span>),
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">ENGLISH</span>(<span class="string">"Intermediario"</span>);
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">SPANISH</span>(<span class="string">"Intermediario"</span>);
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">niveau</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="class-name">LANGUES</span>(<span class="type">String</span> <span class="variable">niveau</span>) { <span class="keyword">this</span>.<span class="variable">niveau</span> = <span class="variable">niveau</span>; }
+                        </div>
+                        <div class="code-line">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">enum</span> <span class="class-name">PROFIL</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="enum-value">CURIEUX</span>, <span class="enum-value">PONCTUEL</span>, <span class="enum-value">RIGOUREUX</span>
+                        </div>
+                        <div class="code-line">}</div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-            <span>Scroll</span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="sobre" class="about-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Sobre Mim</h2>
-                <p class="section-subtitle">Conheça minha jornada e experiência</p>
-            </div>
-            
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="about-content">
-                        <div class="about-text">
-                            <p>Sou um desenvolvedor Full Stack apaixonado por tecnologia e inovação. Com experiência em desenvolvimento web, mobile e sistemas empresariais.</p>
-                            
-                            <div class="about-features">
-                                <div class="feature-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Desenvolvimento Full Stack</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Arquitetura de Sistemas</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>DevOps & Cloud</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    <span>Machine Learning</span>
-                                </div>
-                            </div>
-                        </div>
+        <div class="about-container">
+            <div class="code-editor about-editor">
+                <div class="editor-header">
+                    <div class="editor-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
                     </div>
+                    <div class="file-tab">Experience.java</div>
                 </div>
                 
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="timeline-container">
-                        <div class="timeline">
-                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h4>Jan 2025 - Presente</h4>
-                                    <h5>Software Engineer Junior</h5>
-                                    <p class="timeline-company">GRUPO GOLDEN SAT</p>
-                                    <ul class="timeline-details">
-                                        <li>Desenvolvimento e manutenção de aplicações em Django, Python, e React</li>
-                                        <li>Implantação e manutenção de sistemas na AWS</li>
-                                        <li>Desenvolvimento de soluções para rastreamento de veículos</li>
-                                        <li>Aplicação de IA para reconhecimento de padrões em imagens</li>
-                                        <li>Trabalho com metodologias ágeis (Scrum e Kanban)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h4>Jul 2024 - Presente</h4>
-                                    <h5>Desenvolvedor Full Stack</h5>
-                                    <p class="timeline-company">GRUPO GOLDEN SAT</p>
-                                    <ul class="timeline-details">
-                                        <li>Criação de dashboards interativos e relatórios no Power BI</li>
-                                        <li>Desenvolvimento de modelos de Machine Learning</li>
-                                        <li>Gerenciamento de SQL Server e SQLite3</li>
-                                        <li>Desenvolvimento web com Django e integração de APIs</li>
-                                    </ul>
-                                </div>
-                            </div>
+                <div class="editor-content">
+                    <div class="line-numbers">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                    </div>
+                    
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="comment">/// Experiências profissionais e projetos desenvolvidos</span>
                         </div>
+                        <div class="code-line">
+                            <span class="comment">/// </summary></span>
+                        </div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">EXPÉRIENCES</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">COMPANY_TYPE</span> = <span class="string">"TECHNOLOGY"</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">TOTAL_EXPERIENCE</span> = <span class="number">3</span>;
+                        </div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * GoldenSat - Sistema de Gestão de Satélites
+                             * Desenvolvimento de aplicação completa para controle de satélites
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">GoldenSat</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Durée</span> = <span class="string">"Janvier 2025 - Présent"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Poste</span> = <span class="string">"Développeur Full Stack Senior"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Technologies</span> = {<span class="string">"Java 17"</span>, <span class="string">"Spring Boot 3"</span>, <span class="string">"React 18"</span>, <span class="string">"PostgreSQL"</span>, <span class="string">"Docker"</span>, <span class="string">"AWS"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"Sistema completo de gestão de satélites com dashboard em tempo real"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="variable">_Responsabilities</span> = <span class="keyword">Arrays</span>.<span class="method">asList</span>(<span class="string">"Arquitetura de microserviços"</span>, <span class="string">"API RESTful"</span>, <span class="string">"Interface React"</span>, <span class="string">"Deploy AWS"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * TechCorp - E-commerce Platform
+                             * Plataforma de e-commerce com pagamentos e gestão de estoque
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">TechCorp</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Durée</span> = <span class="string">"Mars 2024 - Décembre 2024"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Poste</span> = <span class="string">"Développeur Backend"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Technologies</span> = {<span class="string">"Python"</span>, <span class="string">"Django"</span>, <span class="string">"FastAPI"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Redis"</span>, <span class="string">"Stripe API"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"Plataforma de e-commerce com sistema de pagamentos e gestão de estoque"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Object</span>&gt; <span class="variable">_Metrics</span> = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Metrics</span>.<span class="method">put</span>(<span class="string">"users"</span>, <span class="number">50000</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Metrics</span>.<span class="method">put</span>(<span class="string">"transactions"</span>, <span class="number">1000000</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Metrics</span>.<span class="method">put</span>(<span class="string">"uptime"</span>, <span class="string">"99.9%"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * DataFlow - Sistema de Analytics
+                             * Plataforma de análise de dados em tempo real
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">DataFlow</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Durée</span> = <span class="string">"Septembre 2023 - Février 2024"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Poste</span> = <span class="string">"Développeur Data Engineer"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Technologies</span> = {<span class="string">"Python"</span>, <span class="string">"Apache Kafka"</span>, <span class="string">"Apache Spark"</span>, <span class="string">"Elasticsearch"</span>, <span class="string">"Kubernetes"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"Sistema de processamento de dados em tempo real com dashboard de analytics"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">double</span> <span class="variable">_Performance</span> = <span class="number">99.5</span>; <span class="comment">// % de uptime</span>
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line">}</div>
                     </div>
                 </div>
             </div>
@@ -213,133 +500,111 @@
 
     <!-- Skills Section -->
     <section id="habilidades" class="skills-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Habilidades</h2>
-                <p class="section-subtitle">Tecnologias e ferramentas que domino</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">Frontend</h3>
-                    <div class="skills-list">
-                        <div class="skill-item" data-skill="React" data-level="90">
-                            <div class="skill-icon">
-                                <i class="bi bi-braces"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">React</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item" data-skill="Vue.js" data-level="85">
-                            <div class="skill-icon">
-                                <i class="bi bi-braces"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Vue.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item" data-skill="Angular" data-level="80">
-                            <div class="skill-icon">
-                                <i class="bi bi-braces"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Angular</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="skills-container">
+            <div class="code-editor skills-editor">
+                <div class="editor-header">
+                    <div class="editor-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
                     </div>
+                    <div class="file-tab">Skills.java</div>
                 </div>
                 
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="category-title">Backend</h3>
-                    <div class="skills-list">
-                        <div class="skill-item" data-skill="Node.js" data-level="95">
-                            <div class="skill-icon">
-                                <i class="bi bi-server"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Node.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item" data-skill="Python" data-level="90">
-                            <div class="skill-icon">
-                                <i class="bi bi-code-slash"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Python</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item" data-skill="Laravel" data-level="85">
-                            <div class="skill-icon">
-                                <i class="bi bi-server"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Laravel</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="editor-content">
+                    <div class="line-numbers">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+                        <span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                        <span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span>
                     </div>
-                </div>
-                
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="category-title">Database</h3>
-                    <div class="skills-list">
-                        <div class="skill-item" data-skill="PostgreSQL" data-level="90">
-                            <div class="skill-icon">
-                                <i class="bi bi-database"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">PostgreSQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
+                    
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="comment">/// Habilidades técnicas e competências</span>
                         </div>
+                        <div class="code-line">
+                            <span class="comment">/// </summary></span>
+                        </div>
+                        <div class="code-line"></div>
                         
-                        <div class="skill-item" data-skill="MongoDB" data-level="85">
-                            <div class="skill-icon">
-                                <i class="bi bi-database"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">MongoDB</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">SKILLS</span> {
                         </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">TOTAL_SKILLS</span> = <span class="number">15</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">EXPERTISE_LEVEL</span> = <span class="string">"Advanced"</span>;
+                        </div>
+                        <div class="code-line"></div>
                         
-                        <div class="skill-item" data-skill="Redis" data-level="80">
-                            <div class="skill-icon">
-                                <i class="bi bi-database"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Redis</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Linguagens de Programação
+                             */</span>
                         </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">ProgrammingLanguages</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; <span class="variable">_Languages</span> = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Languages</span>.<span class="method">put</span>(<span class="string">"Java"</span>, <span class="number">95</span>); <span class="comment">// % proficiency</span>
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Languages</span>.<span class="method">put</span>(<span class="string">"Python"</span>, <span class="number">90</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Languages</span>.<span class="method">put</span>(<span class="string">"JavaScript"</span>, <span class="number">85</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Languages</span>.<span class="method">put</span>(<span class="string">"TypeScript"</span>, <span class="number">80</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Frameworks e Bibliotecas
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">Frameworks</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Backend</span> = {<span class="string">"Spring Boot"</span>, <span class="string">"Django"</span>, <span class="string">"FastAPI"</span>, <span class="string">"Express.js"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Frontend</span> = {<span class="string">"React"</span>, <span class="string">"Vue.js"</span>, <span class="string">"Angular"</span>, <span class="string">"Next.js"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Mobile</span> = {<span class="string">"React Native"</span>, <span class="string">"Flutter"</span>};
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Bancos de Dados e Cloud
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">DatabasesAndCloud</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Databases</span> = {<span class="string">"PostgreSQL"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Redis"</span>, <span class="string">"MySQL"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Cloud</span> = {<span class="string">"AWS"</span>, <span class="string">"Azure"</span>, <span class="string">"Google Cloud"</span>, <span class="string">"Docker"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_DevOps</span> = {<span class="string">"Kubernetes"</span>, <span class="string">"Jenkins"</span>, <span class="string">"GitLab CI"</span>};
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line">}</div>
                     </div>
                 </div>
             </div>
@@ -348,148 +613,148 @@
 
     <!-- Projects Section -->
     <section id="projetos" class="projects-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Projetos</h2>
-                <p class="section-subtitle">Alguns dos meus trabalhos mais recentes</p>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Projeto 1 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-image">
-                        <img src="static/images/goldensar001.png" alt="Sistema Integrado">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
-                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
+        <div class="projects-container">
+            <div class="code-editor projects-editor">
+                <div class="editor-header">
+                    <div class="editor-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sistema Integrado</h3>
-                        <p class="project-description">Sistema completo de gestão empresarial com integração de processos.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">AWS</span>
-                        </div>
-                    </div>
+                    <div class="file-tab">Projects.java</div>
                 </div>
+                
+                <div class="editor-content">
+                    <div class="line-numbers">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                    </div>
+                    
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="comment">/// Projetos desenvolvidos e aplicações criadas</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="comment">/// </summary></span>
+                        </div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">PROJETOS</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">TOTAL_PROJECTS</span> = <span class="number">4</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">REPOSITORY_URL</span> = <span class="string">"github.com/Sjuniorr6"</span>;
+                        </div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Sistema Integrado de Gestão Empresarial
+                             * ERP completo com módulos de vendas, estoque e financeiro
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">SistemaIntegrado</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Tecnologias</span> = {<span class="string">"Python"</span>, <span class="string">"Django"</span>, <span class="string">"PostgreSQL"</span>, <span class="string">"Redis"</span>, <span class="string">"Celery"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"ERP completo com módulos de vendas, estoque, financeiro e RH"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Object</span>&gt; <span class="variable">_Features</span> = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Features</span>.<span class="method">put</span>(<span class="string">"modules"</span>, <span class="number">6</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Features</span>.<span class="method">put</span>(<span class="string">"users"</span>, <span class="string">"1000+"</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Features</span>.<span class="method">put</span>(<span class="string">"status"</span>, <span class="string">"Production"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * GS Voucher - Sistema de Gestão de Vouchers
+                             * Plataforma para criação e gestão de vouchers promocionais
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">GSVoucher</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Tecnologias</span> = {<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"Redis"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Socket.io"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"Sistema completo de criação, validação e gestão de vouchers"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="variable">_Funcionalidades</span> = <span class="keyword">Arrays</span>.<span class="method">asList</span>(<span class="string">"QR Code Generation"</span>, <span class="string">"Real-time Validation"</span>, <span class="string">"Analytics Dashboard"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Sistema de Acionamentos - Controle de Veículos
+                             * Sistema de rastreamento e controle de frota em tempo real
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">SistemaAcionamentos</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Tecnologias</span> = {<span class="string">"Python"</span>, <span class="string">"WebSocket"</span>, <span class="string">"API REST"</span>, <span class="string">"PostgreSQL"</span>, <span class="string">"Redis"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"Sistema de rastreamento GPS e controle de frota em tempo real"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Object</span>&gt; <span class="variable">_Metrics</span> = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Metrics</span>.<span class="method">put</span>(<span class="string">"vehicles"</span>, <span class="number">500</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Metrics</span>.<span class="method">put</span>(<span class="string">"update_frequency"</span>, <span class="string">"30s"</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Metrics</span>.<span class="method">put</span>(<span class="string">"accuracy"</span>, <span class="string">"99.8%"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Portfolio Interativo - Este projeto
+                             * Portfolio desenvolvido com HTML, CSS e JavaScript
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">PortfolioInterativo</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Tecnologias</span> = {<span class="string">"HTML5"</span>, <span class="string">"CSS3"</span>, <span class="string">"JavaScript"</span>, <span class="string">"Responsive Design"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Description</span> = <span class="string">"Portfolio interativo com design de code editor e animações"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="variable">_Features</span> = <span class="keyword">Arrays</span>.<span class="method">asList</span>(<span class="string">"Syntax Highlighting"</span>, <span class="string">"Responsive Design"</span>, <span class="string">"Animations"</span>, <span class="string">"Dark Theme"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
 
-                <!-- Projeto 2 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-image">
-                        <img src="static/images/voucher001.png" alt="GS Voucher">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
-                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
-                            </div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">GS Voucher</h3>
-                        <p class="project-description">Sistema de gestão de vouchers e controle de rotas.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto 3 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-image">
-                        <img src="static/images/acionamentos001.png" alt="Sistema Acionamentos">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
-                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sistema Acionamentos</h3>
-                        <p class="project-description">Monitoramento em tempo real e acionamento remoto.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto 4 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="project-image">
-                        <img src="static/images/gs-controller.png" alt="GS Controller">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
-                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">GS Controller</h3>
-                        <p class="project-description">Sistema de controle e monitoramento de eventos.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">WebSocket</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto 5 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="project-image">
-                        <img src="static/images/cass-cassinos.png" alt="Cass Cassinos">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
-                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Cass Cassinos</h3>
-                        <p class="project-description">Sistema de controle e gestão para cassinos.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto 6 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="project-image">
-                        <img src="static/images/gs-deskcontrol.png" alt="GS DeskControl">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank"><i class="bi bi-eye"></i></a>
-                                <a href="https://github.com/Sjuniorr6" class="project-link" target="_blank"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">GS DeskControl</h3>
-                        <p class="project-description">Sistema de gestão de locais e responsáveis.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Angular</span>
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -498,80 +763,108 @@
 
     <!-- Contact Section -->
     <section id="contato" class="contact-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Contato</h2>
-                <p class="section-subtitle">Vamos trabalhar juntos!</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email</h4>
-                                <p>sjuniorr6@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="bi bi-telephone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Telefone</h4>
-                                <p>+55 (11) 987487342</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="bi bi-geo-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Localização</h4>
-                                <p>São Paulo, SP - Brasil</p>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/sidnei-junior-115962207/" target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a>
-                            <a href="https://github.com/Sjuniorr6" target="_blank" class="social-link"><i class="bi bi-github"></i></a>
-                            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
-                        </div>
+        <div class="contact-container">
+            <div class="code-editor contact-editor">
+                <div class="editor-header">
+                    <div class="editor-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
                     </div>
+                    <div class="file-tab">Contact.java</div>
                 </div>
                 
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" required>
-                                <label for="name">Nome</label>
-                                <div class="form-line"></div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" required>
-                                <label for="email">Email</label>
-                                <div class="form-line"></div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                                <label for="message">Mensagem</label>
-                                <div class="form-line"></div>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary btn-glow">
-                                <span>Enviar Mensagem</span>
-                                <i class="bi bi-send"></i>
-                            </button>
-                        </form>
+                <div class="editor-content">
+                    <div class="line-numbers">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                    </div>
+                    
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="comment">/// Informações de contato e redes sociais</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="comment">/// </summary></span>
+                        </div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line">
+                            <span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">CONTACT</span> {
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">AVAILABILITY</span> = <span class="string">"Available for new projects"</span>;
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">RESPONSE_TIME</span> = <span class="string">"24h"</span>;
+                        </div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Redes Sociais e Contatos Profissionais
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">SocialMedia</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; <span class="variable">_Contacts</span> = <span class="keyword">new</span> <span class="class-name">HashMap</span>&lt;&gt;();
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Contacts</span>.<span class="method">put</span>(<span class="string">"LinkedIn"</span>, <span class="string">"linkedin.com/in/sidnei-junior"</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Contacts</span>.<span class="method">put</span>(<span class="string">"GitHub"</span>, <span class="string">"github.com/Sjuniorr6"</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Contacts</span>.<span class="method">put</span>(<span class="string">"Email"</span>, <span class="string">"sjuniorr6@gmail.com"</span>);
+                        </div>
+                        <div class="code-line indent-3">
+                            <span class="variable">_Contacts</span>.<span class="method">put</span>(<span class="string">"WhatsApp"</span>, <span class="string">"+55 11 98748-7342"</span>);
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Formulário de Contato
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">ContactForm</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span>[] <span class="variable">_Fields</span> = {<span class="string">"Nome"</span>, <span class="string">"Email"</span>, <span class="string">"Assunto"</span>, <span class="string">"Mensagem"</span>};
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Validation</span> = <span class="string">"Required fields validation"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Response</span> = <span class="string">"Auto-reply confirmation"</span>;
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line"></div>
+                        
+                        <div class="code-line indent-1">
+                            <span class="comment">/**
+                             * Disponibilidade e Horários
+                             */</span>
+                        </div>
+                        <div class="code-line indent-1">
+                            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="method">Availability</span>() {
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_Status</span> = <span class="string">"Available for freelance projects"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_TimeZone</span> = <span class="string">"GMT-3 (São Paulo)"</span>;
+                        </div>
+                        <div class="code-line indent-2">
+                            <span class="type">String</span> <span class="variable">_ResponseTime</span> = <span class="string">"Within 24 hours"</span>;
+                        </div>
+                        <div class="code-line indent-1">}</div>
+                        <div class="code-line">}</div>
                     </div>
                 </div>
             </div>
@@ -580,29 +873,25 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span>SJR</span>
-                    <p>Desenvolvedor Full Stack</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#habilidades">Habilidades</a>
-                    <a href="#projetos">Projetos</a>
-                    <a href="#contato">Contato</a>
-                </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>SJR</span>
+                <p>Desenvolvedor Full Stack</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sidnei Junior. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sidnei Junior. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

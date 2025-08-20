@@ -1,214 +1,145 @@
-# SJR Portfólio - Desenvolvedor Full Stack
+# Portfolio Sidnei Junior - Sistema de Layouts Duplos
 
-## 🚀 Sobre o Projeto
+## 🎨 Sobre o Projeto
 
-Portfólio profissional moderno e responsivo desenvolvido com HTML5, CSS3 e JavaScript, apresentando projetos, habilidades e experiência profissional de forma elegante e interativa.
+Este portfolio possui **dois layouts diferentes** que podem ser alternados dinamicamente:
 
-## ✨ Principais Melhorias Implementadas
+### 📱 Layout Dev (Atual)
+- **Estilo**: Code Editor / Terminal
+- **Características**: 
+  - Interface inspirada em editores de código
+  - Sintaxe highlighting
+  - Scroll horizontal
+  - Design minimalista e técnico
+  - Foco em desenvolvedores
 
-### 🎨 Design e Visual
-- **Paleta de Cores Moderna**: Cores vibrantes com gradientes dourado (#ffd700) e laranja (#ff6b35)
-- **Glassmorphism**: Efeitos de vidro fosco com backdrop-filter
-- **Animações Suaves**: Transições e animações CSS fluidas
-- **Efeitos de Glow**: Brilhos e sombras neon para elementos interativos
-- **Responsividade**: Design totalmente responsivo para todos os dispositivos
+### 🎯 Layout Usuário (Alternativo)
+- **Estilo**: Moderno / Profissional
+- **Características**:
+  - Design moderno com Bootstrap
+  - Animações AOS
+  - Layout responsivo
+  - Gradientes e efeitos visuais
+  - Foco em usuários finais
 
-### 🎠 Carrossel Principal Giratório
-- **Carrossel Principal**: Navegação entre todos os projetos em um único carrossel
-- **6 Projetos Integrados**: Sistema Integrado, Vouchers, Acionamentos, GS Controller, Cass Cassinos, GS DeskControl
-- **Indicadores Personalizados**: Pontos de navegação estilizados com cores vibrantes
-- **Efeitos de Hover**: Rotação e escala ao passar o mouse
-- **Controles Intuitivos**: Botões de navegação com efeitos visuais
-- **Navegação por Teclado**: Setas esquerda/direita para navegar
+## 🚀 Como Usar
 
-### 🎭 Animações e Efeitos
-- **Typewriter Effect**: Texto digitado automaticamente no hero
-- **Scroll Animations**: Elementos aparecem conforme o scroll
-- **Parallax Effects**: Efeitos de profundidade
-- **Particle Effects**: Partículas flutuantes no background
-- **Hover Effects**: Efeitos interativos em elementos
-- **Transições Suaves**: Animações fluidas entre slides
+### Alternância de Layouts
+1. **No Layout Dev**: Clique no botão "Layout Usuário" no navbar
+2. **No Layout Usuário**: Clique no botão "Layout Dev" no navbar
 
-### 🔧 Funcionalidades JavaScript
-- **Smooth Scroll**: Navegação suave entre seções
-- **Dynamic Navbar**: Barra de navegação responsiva
-- **Form Validation**: Validação de formulários
-- **Notifications**: Sistema de notificações elegante
-- **Animated Counters**: Contadores animados para habilidades
-- **Carrossel Automático**: Transição automática entre projetos
-
-### 📱 Responsividade
-- **Mobile First**: Design otimizado para dispositivos móveis
-- **Breakpoints**: Adaptação para tablets e desktops
-- **Touch Friendly**: Interface otimizada para toque
-
-## 🛠️ Tecnologias Utilizadas
-
-- **HTML5**: Estrutura semântica
-- **CSS3**: Estilos modernos com variáveis CSS
-- **JavaScript**: Interatividade e animações
-- **Bootstrap 5**: Framework CSS responsivo
-- **Bootstrap Icons**: Ícones modernos
-
-## 🎯 Seções do Portfólio
-
-### 1. Hero Section
-- Apresentação principal com efeito typewriter
-- Imagem de perfil com borda animada
-- Botões de call-to-action
-
-### 2. Sobre
-- Informações pessoais e profissionais
-- Timeline de experiência profissional
-- Download do currículo
-
-### 3. Habilidades
-- Barras de progresso animadas
-- Categorização por tecnologias
-- Efeitos de hover com contadores
-
-### 4. Projetos (Carrossel Principal)
-- **Sistema Integrado - Gestão Empresarial**: Python, Django, PostgreSQL, API, AWS
-- **GS-Voucher - Sistema de Gestão de Vouchers**: React, Node.js, API, Express, Redis
-- **Sistema de Acionamento e Monitoramento**: Python, Django, PostgreSQL, WebSocket, API
-- **GS Controller - Sistema de Eventos**: React, Node.js, MongoDB, WebSocket, Redis
-- **Cass Cassinos - Sistema de Controle e Gestão**: Vue.js, Laravel, MySQL, API, WebSocket
-- **GS DeskControl - Sistema de Gestão de Locais**: Angular, Spring Boot, PostgreSQL, REST API, Docker
-
-### 5. Contato
-- Informações de contato
-- Ícones animados
-- Links para redes sociais
-
-## 🚀 Como Executar
-
-1. Clone o repositório:
-```bash
-git clone [url-do-repositorio]
-```
-
-2. Abra o arquivo `index.html` no navegador
-
-3. Ou use um servidor local:
-```bash
-python -m http.server 8000
-# ou
-npx serve .
-```
+### Funcionalidades
+- ✅ **Alternância instantânea** entre layouts
+- ✅ **Preservação do estado** do layout atual
+- ✅ **Carregamento dinâmico** de estilos e scripts
+- ✅ **Responsividade** em ambos os layouts
+- ✅ **Notificações** de status
 
 ## 📁 Estrutura de Arquivos
 
 ```
-Portifolio/
-├── index.html          # Página principal
+Portfolio/
+├── index.html              # Layout Dev (principal)
 ├── css/
-│   └── style.css       # Estilos CSS
+│   └── style.css           # Estilos do Layout Dev
 ├── js/
-│   └── main.js         # JavaScript
-├── static/
-│   ├── docs/           # Documentos
-│   └── images/         # Imagens dos projetos
-└── README.md           # Documentação
+│   ├── main.js             # Scripts do Layout Dev
+│   └── layoutManager.js    # Gerenciador de layouts
+├── layout2/
+│   ├── index.html          # Layout Usuário
+│   ├── css/
+│   │   └── style.css       # Estilos do Layout Usuário
+│   └── main.js             # Scripts do Layout Usuário
+└── static/
+    └── images/             # Imagens do portfolio
 ```
 
-## 🎨 Características Visuais
+## 🔧 Tecnologias Utilizadas
 
-### Cores Principais
-- **Primary**: #ffd700 (Amarelo dourado vibrante)
-- **Secondary**: #ff6b35 (Laranja vibrante)
-- **Accent**: #4ecdc4 (Turquesa vibrante)
-- **Success**: #45b7d1 (Azul vibrante)
-- **Warning**: #96ceb4 (Verde vibrante)
-- **Danger**: #ff6b6b (Vermelho vibrante)
+### Layout Dev
+- HTML5
+- CSS3 (Custom)
+- JavaScript (Vanilla)
+- Fira Code Font
+- JetBrains Mono Font
 
-### Efeitos Visuais
-- Gradientes lineares e radiais
-- Sombras com glow neon
-- Backdrop-filter para glassmorphism
-- Animações CSS keyframes
-- Transições suaves
+### Layout Usuário
+- HTML5
+- CSS3 (Custom)
+- JavaScript (Vanilla)
+- Bootstrap 5.3.0
+- AOS (Animate On Scroll)
+- Google Fonts (Inter, Pacifico, Righteous)
 
-## 🎠 Carrossel Principal
+## 🎯 Características dos Layouts
 
-### Funcionalidades
-- **Navegação Automática**: Transição automática a cada 8 segundos
-- **Controles Manuais**: Botões de navegação e indicadores
-- **Navegação por Teclado**: Setas esquerda/direita
-- **Efeitos de Hover**: Cards se elevam e rotacionam
-- **Indicadores Ativos**: Pontos de navegação com cores vibrantes
-- **Transições Suaves**: Animações fluidas entre slides
+### Layout Dev
+- **Tema**: Dark com cores de editor
+- **Tipografia**: Monospace (Fira Code)
+- **Layout**: Code editor com line numbers
+- **Interação**: Scroll horizontal
+- **Público**: Desenvolvedores
 
-### Projetos Incluídos
-1. **Sistema Integrado**: Gestão empresarial completa
-2. **GS-Voucher**: Sistema de vouchers e rotas
-3. **Acionamentos**: Monitoramento em tempo real
-4. **GS Controller**: Controle de eventos e alertas
-5. **Cass Cassinos**: Gestão de cassinos
-6. **GS DeskControl**: Administração de locais
+### Layout Usuário
+- **Tema**: Light com gradientes
+- **Tipografia**: Sans-serif (Inter)
+- **Layout**: Cards e seções modernas
+- **Interação**: Animações e transições
+- **Público**: Usuários finais
 
-## 📱 Compatibilidade
+## 🛠️ Implementação Técnica
 
-- ✅ Chrome (recomendado)
-- ✅ Firefox
-- ✅ Safari
-- ✅ Edge
-- ✅ Dispositivos móveis
-- ✅ Tablets
-
-## 🔧 Personalização
-
-### Alterando Cores
-Edite as variáveis CSS no arquivo `css/style.css`:
-
-```css
-:root {
-    --primary-color: #ffd700;
-    --secondary-color: #ff6b35;
-    /* ... outras cores */
+### LayoutManager Class
+```javascript
+class LayoutManager {
+    constructor() {
+        this.currentLayout = 'dev';
+        this.devLayoutContent = null;
+    }
+    
+    async toggleLayout() {
+        // Lógica de alternância
+    }
 }
 ```
 
-### Adicionando Projetos
-1. Adicione as imagens na pasta `static/images/`
-2. Crie uma nova seção no carrossel principal seguindo o padrão existente
-3. Configure as tecnologias e descrições
+### Funcionalidades
+- **Salvamento de estado**: Preserva o layout atual
+- **Carregamento dinâmico**: Carrega estilos e scripts conforme necessário
+- **Gerenciamento de dependências**: Adiciona/remove Bootstrap, AOS, etc.
+- **Reinicialização**: Reinicializa scripts após alternância
 
-### Modificando Animações
-As animações estão definidas no CSS com `@keyframes` e podem ser facilmente personalizadas.
+## 📱 Responsividade
 
-## 🎯 Funcionalidades Avançadas
+Ambos os layouts são totalmente responsivos:
+- **Desktop**: Layout completo
+- **Tablet**: Ajustes de tamanho
+- **Mobile**: Layout otimizado
 
-### Carrossel Principal
-- Transições automáticas configuráveis
-- Efeitos de hover personalizados
-- Navegação por teclado
-- Indicadores visuais ativos
-- Animações de entrada e saída
+## 🎨 Personalização
 
-### Efeitos Visuais
-- Partículas flutuantes no background
-- Efeitos de glow neon
-- Animações de scroll
-- Transições suaves
-- Glassmorphism
+### Cores e Temas
+- Layout Dev: Variáveis CSS para cores de editor
+- Layout Usuário: Sistema de cores Bootstrap + custom
 
-### Interatividade
-- Hover effects em todos os elementos
-- Animações de loading
-- Contadores animados
-- Notificações elegantes
-- Smooth scroll
+### Animações
+- Layout Dev: Animações CSS simples
+- Layout Usuário: AOS + animações customizadas
 
-## 📞 Contato
+## 🚀 Como Executar
 
-- **Email**: sjuniorr6@gmail.com
-- **Telefone**: +55 (11) 987487342
-- **Localização**: São Paulo, SP - Brasil
+1. Clone o repositório
+2. Abra `index.html` no navegador
+3. Use o botão "Layout Usuário" para alternar
+4. Explore ambos os layouts
 
-## 📄 Licença
+## 📝 Notas
 
-Este projeto está sob a licença MIT. Sinta-se livre para usar e modificar conforme necessário.
+- O sistema salva automaticamente o estado do layout atual
+- A alternância é instantânea e preserva a posição de scroll
+- Ambos os layouts compartilham as mesmas imagens e conteúdo
+- O sistema é extensível para adicionar mais layouts no futuro
 
 ---
 
-**Desenvolvido com ❤️ por Sidnei Junior**
+**Desenvolvido por Sidnei Junior** 🚀
