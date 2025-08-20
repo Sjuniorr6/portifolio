@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Layouts - Sidnei Junior</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste de Sistema de Layouts</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> Testando sistema de alternância de layouts
+        </div>
+        
+        <h2>Testes Disponíveis:</h2>
+        
+        <button class="test-button" onclick="testLayoutFiles()">
+            📁 Verificar Arquivos de Layout
+        </button>
+        
+        <button class="test-button" onclick="testLayoutToggle()">
+            🔄 Testar Alternância de Layout
+        </button>
+        
+        <button class="test-button" onclick="testCSSLoading()">
+            🎨 Testar Carregamento de CSS
+        </button>
+        
+        <button class="test-button" onclick="testJavascriptLoading()">
+            📜 Testar Carregamento de JS
+        </button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `status ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        async function testLayoutFiles() {
+            addTestResult('🔍 Verificando arquivos de layout...', 'info');
+            
+            try {
+                // Testar se o layout2/index.html existe
+                const response = await fetch('layout2/index.html');
+                if (response.ok) {
+                    addTestResult('✅ layout2/index.html encontrado', 'success');
+                } else {
+                    addTestResult('❌ layout2/index.html não encontrado', 'error');
+                }
+            } catch (error) {
+                addTestResult('❌ Erro ao verificar layout2/index.html: ' + error.message, 'error');
+            }
+            
+            try {
+                // Testar se o layout2/css/style.css existe
+                const response = await fetch('layout2/css/style.css');
+                if (response.ok) {
+                    addTestResult('✅ layout2/css/style.css encontrado', 'success');
+                } else {
+                    addTestResult('❌ layout2/css/style.css não encontrado', 'error');
+                }
+            } catch (error) {
+                addTestResult('❌ Erro ao verificar layout2/css/style.css: ' + error.message, 'error');
+            }
+            
+            try {
+                // Testar se o layout2/main.js existe
+                const response = await fetch('layout2/main.js');
+                if (response.ok) {
+                    addTestResult('✅ layout2/main.js encontrado', 'success');
+                } else {
+                    addTestResult('❌ layout2/main.js não encontrado', 'error');
+                }
+            } catch (error) {
+                addTestResult('❌ Erro ao verificar layout2/main.js: ' + error.message, 'error');
+            }
+        }
+
+        function testLayoutToggle() {
+            addTestResult('🔄 Testando alternância de layout...', 'info');
+            
+            // Verificar se o LayoutManager está disponível
+            if (typeof window.layoutManager !== 'undefined') {
+                addTestResult('✅ LayoutManager encontrado', 'success');
+                
+                // Testar se o botão de layout existe
+                const layoutToggle = document.getElementById('layoutToggle');
+                if (layoutToggle) {
+                    addTestResult('✅ Botão de layout encontrado', 'success');
+                } else {
+                    addTestResult('❌ Botão de layout não encontrado', 'error');
+                }
+            } else {
+                addTestResult('❌ LayoutManager não encontrado', 'error');
+            }
+        }
+
+        function testCSSLoading() {
+            addTestResult('🎨 Testando carregamento de CSS...', 'info');
+            
+            // Verificar CSS atual
+            const currentCSS = document.querySelector('link[href="css/style.css"]');
+            if (currentCSS) {
+                addTestResult('✅ CSS do layout dev carregado', 'success');
+            } else {
+                addTestResult('❌ CSS do layout dev não encontrado', 'error');
+            }
+            
+            // Verificar se Bootstrap está disponível
+            const bootstrapCSS = document.querySelector('link[href*="bootstrap"]');
+            if (bootstrapCSS) {
+                addTestResult('✅ Bootstrap CSS carregado', 'success');
+            } else {
+                addTestResult('ℹ️ Bootstrap CSS não carregado (normal no layout dev)', 'info');
+            }
+        }
+
+        function testJavascriptLoading() {
+            addTestResult('📜 Testando carregamento de JavaScript...', 'info');
+            
+            // Verificar se o main.js está carregado
+            const mainJS = document.querySelector('script[src="js/main.js"]');
+            if (mainJS) {
+                addTestResult('✅ main.js carregado', 'success');
+            } else {
+                addTestResult('❌ main.js não encontrado', 'error');
+            }
+            
+            // Verificar se o layoutManager.js está carregado
+            const layoutManagerJS = document.querySelector('script[src="js/layoutManager.js"]');
+            if (layoutManagerJS) {
+                addTestResult('✅ layoutManager.js carregado', 'success');
+            } else {
+                addTestResult('❌ layoutManager.js não encontrado', 'error');
+            }
+            
+            // Verificar funções disponíveis
+            if (typeof initializeApp === 'function') {
+                addTestResult('✅ initializeApp() disponível', 'success');
+            } else {
+                addTestResult('❌ initializeApp() não encontrada', 'error');
+            }
+        }
+
+        // Executar testes automáticos ao carregar a página
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addTestResult('🚀 Página carregada, executando testes automáticos...', 'info');
+                testLayoutFiles();
+                testLayoutToggle();
+                testCSSLoading();
+                testJavascriptLoading();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

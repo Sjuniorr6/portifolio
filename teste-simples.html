@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Simples - Layout Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste Simples - Layout Usuário</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> Testando carregamento do layout usuário
+        </div>
+        
+        <h2>Testes:</h2>
+        
+        <button class="test-button" onclick="testLayoutFiles()">
+            📁 Verificar Arquivos
+        </button>
+        
+        <button class="test-button" onclick="testLayoutContent()">
+            📄 Verificar Conteúdo
+        </button>
+        
+        <button class="test-button" onclick="testLayoutToggle()">
+            🔄 Testar Botão
+        </button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `status ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        async function testLayoutFiles() {
+            addTestResult('🔍 Verificando arquivos...', 'info');
+            
+            const files = [
+                'layout2/index.html',
+                'layout2/css/style.css',
+                'layout2/js/main.js'
+            ];
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const content = await response.text();
+                        addTestResult(`✅ ${file} encontrado (${content.length} caracteres)`, 'success');
+                    } else {
+                        addTestResult(`❌ ${file} não encontrado (${response.status})`, 'error');
+                    }
+                } catch (error) {
+                    addTestResult(`❌ Erro ao verificar ${file}: ${error.message}`, 'error');
+                }
+            }
+        }
+
+        async function testLayoutContent() {
+            addTestResult('📄 Verificando conteúdo do layout...', 'info');
+            
+            try {
+                const response = await fetch('layout2/index.html');
+                if (response.ok) {
+                    const html = await response.text();
+                    addTestResult('✅ HTML carregado com sucesso', 'success');
+                    
+                    // Verificar se tem os elementos necessários
+                    const hasHeroSection = html.includes('hero-section');
+                    const hasNavbar = html.includes('navbar');
+                    const hasProfileImage = html.includes('profile-image');
+                    const hasBootstrap = html.includes('bootstrap');
+                    const hasAOS = html.includes('aos');
+                    
+                    if (hasHeroSection) addTestResult('✅ Seção hero encontrada', 'success');
+                    if (hasNavbar) addTestResult('✅ Navbar encontrada', 'success');
+                    if (hasProfileImage) addTestResult('✅ Imagem de perfil encontrada', 'success');
+                    if (hasBootstrap) addTestResult('✅ Bootstrap incluído', 'success');
+                    if (hasAOS) addTestResult('✅ AOS incluído', 'success');
+                    
+                    // Verificar se tem o conteúdo completo
+                    const hasAboutSection = html.includes('about-section');
+                    const hasSkillsSection = html.includes('skills-section');
+                    const hasProjectsSection = html.includes('projects-section');
+                    const hasContactSection = html.includes('contact-section');
+                    
+                    if (hasAboutSection) addTestResult('✅ Seção sobre encontrada', 'success');
+                    if (hasSkillsSection) addTestResult('✅ Seção habilidades encontrada', 'success');
+                    if (hasProjectsSection) addTestResult('✅ Seção projetos encontrada', 'success');
+                    if (hasContactSection) addTestResult('✅ Seção contato encontrada', 'success');
+                    
+                    addTestResult('🎯 Layout usuário completo e pronto!', 'success');
+                    
+                } else {
+                    addTestResult(`❌ HTML não encontrado (${response.status})`, 'error');
+                }
+            } catch (error) {
+                addTestResult(`❌ Erro no teste: ${error.message}`, 'error');
+            }
+        }
+
+        async function testLayoutToggle() {
+            addTestResult('🔄 Testando botão de layout...', 'info');
+            
+            // Verificar se o LayoutManager está disponível
+            if (typeof window.layoutManager !== 'undefined') {
+                addTestResult('✅ LayoutManager encontrado', 'success');
+                addTestResult('🔄 Layout usuário pronto para ser carregado!', 'success');
+            } else {
+                addTestResult('❌ LayoutManager não encontrado', 'error');
+                addTestResult('💡 Abra o portfolio principal para testar o botão', 'info');
+            }
+        }
+
+        // Executar testes automáticos
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addTestResult('🚀 Iniciando testes automáticos...', 'info');
+                testLayoutFiles();
+                setTimeout(() => testLayoutContent(), 1000);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

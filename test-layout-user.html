@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Layout Usuário - Sidnei Junior</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+        .status.warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste Específico - Layout Usuário</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> Testando carregamento específico do layout usuário
+        </div>
+        
+        <h2>Testes de Layout Usuário:</h2>
+        
+        <button class="test-button" onclick="testUserLayoutFiles()">
+            📁 Verificar Arquivos do Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="testUserLayoutCSS()">
+            🎨 Testar CSS do Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="testUserLayoutJS()">
+            📜 Testar JS do Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="testUserLayoutContent()">
+            📄 Testar Conteúdo do Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="testUserLayoutIntegration()">
+            🔄 Testar Integração Completa
+        </button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `status ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        async function testUserLayoutFiles() {
+            addTestResult('🔍 Verificando arquivos específicos do layout usuário...', 'info');
+            
+            const files = [
+                'layout2/index.html',
+                'layout2/css/style.css',
+                'layout2/main.js'
+            ];
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        addTestResult(`✅ ${file} encontrado`, 'success');
+                    } else {
+                        addTestResult(`❌ ${file} não encontrado (${response.status})`, 'error');
+                    }
+                } catch (error) {
+                    addTestResult(`❌ Erro ao verificar ${file}: ${error.message}`, 'error');
+                }
+            }
+        }
+
+        async function testUserLayoutCSS() {
+            addTestResult('🎨 Testando CSS do layout usuário...', 'info');
+            
+            try {
+                const response = await fetch('layout2/css/style.css');
+                if (response.ok) {
+                    const cssContent = await response.text();
+                    addTestResult(`✅ CSS carregado (${cssContent.length} caracteres)`, 'success');
+                    
+                    // Verificar se tem estilos importantes
+                    const hasHeroSection = cssContent.includes('.hero-section');
+                    const hasNavbar = cssContent.includes('.navbar');
+                    const hasProfileImage = cssContent.includes('.profile-image');
+                    
+                    if (hasHeroSection) addTestResult('✅ Estilo .hero-section encontrado', 'success');
+                    if (hasNavbar) addTestResult('✅ Estilo .navbar encontrado', 'success');
+                    if (hasProfileImage) addTestResult('✅ Estilo .profile-image encontrado', 'success');
+                    
+                } else {
+                    addTestResult(`❌ CSS não encontrado (${response.status})`, 'error');
+                }
+            } catch (error) {
+                addTestResult(`❌ Erro ao carregar CSS: ${error.message}`, 'error');
+            }
+        }
+
+        async function testUserLayoutJS() {
+            addTestResult('📜 Testando JavaScript do layout usuário...', 'info');
+            
+            try {
+                const response = await fetch('layout2/main.js');
+                if (response.ok) {
+                    const jsContent = await response.text();
+                    addTestResult(`✅ JS carregado (${jsContent.length} caracteres)`, 'success');
+                    
+                    // Verificar se tem funções importantes
+                    const hasInitializeApp = jsContent.includes('initializeApp');
+                    const hasTypewriter = jsContent.includes('typewriter');
+                    const hasAOS = jsContent.includes('AOS');
+                    
+                    if (hasInitializeApp) addTestResult('✅ Função initializeApp encontrada', 'success');
+                    if (hasTypewriter) addTestResult('✅ Efeito typewriter encontrado', 'success');
+                    if (hasAOS) addTestResult('✅ AOS encontrado', 'success');
+                    
+                } else {
+                    addTestResult(`❌ JS não encontrado (${response.status})`, 'error');
+                }
+            } catch (error) {
+                addTestResult(`❌ Erro ao carregar JS: ${error.message}`, 'error');
+            }
+        }
+
+        async function testUserLayoutContent() {
+            addTestResult('📄 Testando conteúdo do layout usuário...', 'info');
+            
+            try {
+                const response = await fetch('layout2/index.html');
+                if (response.ok) {
+                    const htmlContent = await response.text();
+                    addTestResult(`✅ HTML carregado (${htmlContent.length} caracteres)`, 'success');
+                    
+                    // Verificar se tem elementos importantes
+                    const hasHeroSection = htmlContent.includes('hero-section');
+                    const hasNavbar = htmlContent.includes('navbar');
+                    const hasProfileImage = htmlContent.includes('profile-image');
+                    const hasBootstrap = htmlContent.includes('bootstrap');
+                    const hasAOS = htmlContent.includes('aos');
+                    
+                    if (hasHeroSection) addTestResult('✅ Seção hero encontrada', 'success');
+                    if (hasNavbar) addTestResult('✅ Navbar encontrada', 'success');
+                    if (hasProfileImage) addTestResult('✅ Imagem de perfil encontrada', 'success');
+                    if (hasBootstrap) addTestResult('✅ Bootstrap incluído', 'success');
+                    if (hasAOS) addTestResult('✅ AOS incluído', 'success');
+                    
+                } else {
+                    addTestResult(`❌ HTML não encontrado (${response.status})`, 'error');
+                }
+            } catch (error) {
+                addTestResult(`❌ Erro ao carregar HTML: ${error.message}`, 'error');
+            }
+        }
+
+        async function testUserLayoutIntegration() {
+            addTestResult('🔄 Testando integração completa do layout usuário...', 'info');
+            
+            try {
+                // Testar se o LayoutManager está disponível
+                if (typeof window.layoutManager !== 'undefined') {
+                    addTestResult('✅ LayoutManager encontrado', 'success');
+                    
+                    // Simular carregamento do layout usuário
+                    addTestResult('🔄 Simulando carregamento do layout usuário...', 'info');
+                    
+                    // Verificar se os arquivos existem antes de tentar carregar
+                    const files = ['layout2/index.html', 'layout2/css/style.css', 'layout2/main.js'];
+                    let allFilesExist = true;
+                    
+                    for (const file of files) {
+                        const response = await fetch(file);
+                        if (!response.ok) {
+                            allFilesExist = false;
+                            addTestResult(`❌ ${file} não encontrado`, 'error');
+                        }
+                    }
+                    
+                    if (allFilesExist) {
+                        addTestResult('✅ Todos os arquivos necessários encontrados', 'success');
+                        addTestResult('🎯 Layout usuário pronto para ser carregado!', 'success');
+                    } else {
+                        addTestResult('⚠️ Alguns arquivos estão faltando', 'warning');
+                    }
+                    
+                } else {
+                    addTestResult('❌ LayoutManager não encontrado', 'error');
+                }
+            } catch (error) {
+                addTestResult(`❌ Erro no teste de integração: ${error.message}`, 'error');
+            }
+        }
+
+        // Executar testes automáticos ao carregar a página
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addTestResult('🚀 Página carregada, executando testes automáticos...', 'info');
+                testUserLayoutFiles();
+                setTimeout(() => testUserLayoutCSS(), 1000);
+                setTimeout(() => testUserLayoutJS(), 2000);
+                setTimeout(() => testUserLayoutContent(), 3000);
+                setTimeout(() => testUserLayoutIntegration(), 4000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

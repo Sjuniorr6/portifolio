@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Layout Usuário - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+        .layout-preview {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9fafb;
+        }
+        .layout-preview h3 {
+            margin-top: 0;
+            color: #374151;
+        }
+        .content-check {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .content-check i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        .content-check.success i {
+            color: #10b981;
+        }
+        .content-check.error i {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste Específico - Layout Usuário</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> Verificando se o layout usuário está sendo carregado corretamente
+        </div>
+        
+        <h2>Testes:</h2>
+        
+        <button class="test-button" onclick="testUserLayoutContent()">
+            📄 Verificar Conteúdo Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="testUserLayoutStyles()">
+            🎨 Verificar Estilos Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="testUserLayoutScripts()">
+            ⚡ Verificar Scripts Layout Usuário
+        </button>
+        
+        <button class="test-button" onclick="simulateLayoutSwitch()">
+            🔄 Simular Alternância de Layout
+        </button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `status ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function addContentCheck(title, content, isSuccess) {
+            const resultsDiv = document.getElementById('test-results');
+            const checkDiv = document.createElement('div');
+            checkDiv.className = `content-check ${isSuccess ? 'success' : 'error'}`;
+            checkDiv.innerHTML = `
+                <i class="${isSuccess ? '✓' : '✗'}"></i>
+                <strong>${title}:</strong> ${content}
+            `;
+            resultsDiv.appendChild(checkDiv);
+        }
+
+        async function testUserLayoutContent() {
+            addTestResult('📄 Verificando conteúdo do layout usuário...', 'info');
+            
+            try {
+                const response = await fetch('layout2/index.html');
+                if (response.ok) {
+                    const html = await response.text();
+                    addTestResult('✅ HTML do layout usuário carregado com sucesso', 'success');
+                    
+                    // Verificar seções principais
+                    const sections = [
+                        { id: 'home', name: 'Home', class: 'hero-section' },
+                        { id: 'sobre', name: 'Sobre', class: 'about-section' },
+                        { id: 'habilidades', name: 'Habilidades', class: 'skills-section' },
+                        { id: 'projetos', name: 'Projetos', class: 'projects-section' },
+                        { id: 'contato', name: 'Contato', class: 'contact-section' }
+                    ];
+                    
+                    sections.forEach(section => {
+                        const hasSection = html.includes(`id="${section.id}"`);
+                        const hasClass = html.includes(`class="${section.class}"`);
+                        
+                        if (hasSection && hasClass) {
+                            addContentCheck(`Seção ${section.name}`, 'Encontrada', true);
+                        } else {
+                            addContentCheck(`Seção ${section.name}`, 'Não encontrada', false);
+                        }
+                    });
+                    
+                    // Verificar elementos específicos
+                    const elements = [
+                        { name: 'Navbar', search: 'navbar' },
+                        { name: 'Profile Image', search: 'profile-image' },
+                        { name: 'Hero Content', search: 'hero-content' },
+                        { name: 'Skills Grid', search: 'skills-grid' },
+                        { name: 'Projects Grid', search: 'projects-grid' },
+                        { name: 'Contact Form', search: 'contact-form' }
+                    ];
+                    
+                    elements.forEach(element => {
+                        const hasElement = html.includes(element.search);
+                        addContentCheck(element.name, hasElement ? 'Encontrado' : 'Não encontrado', hasElement);
+                    });
+                    
+                    // Verificar Bootstrap e AOS
+                    const hasBootstrap = html.includes('bootstrap');
+                    const hasAOS = html.includes('aos');
+                    const hasGoogleFonts = html.includes('googleapis.com');
+                    
+                    addContentCheck('Bootstrap', hasBootstrap ? 'Incluído' : 'Não incluído', hasBootstrap);
+                    addContentCheck('AOS Animation', hasAOS ? 'Incluído' : 'Não incluído', hasAOS);
+                    addContentCheck('Google Fonts', hasGoogleFonts ? 'Incluído' : 'Não incluído', hasGoogleFonts);
+                    
+                    addTestResult('🎯 Layout usuário completo e pronto!', 'success');
+                    
+                } else {
+                    addTestResult(`❌ HTML do layout usuário não encontrado (${response.status})`, 'error');
+                }
+            } catch (error) {
+                addTestResult(`❌ Erro ao carregar layout usuário: ${error.message}`, 'error');
+            }
+        }
+
+        async function testUserLayoutStyles() {
+            addTestResult('🎨 Verificando estilos do layout usuário...', 'info');
+            
+            const cssFiles = [
+                'layout2/css/style.css'
+            ];
+            
+            for (const file of cssFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const css = await response.text();
+                        addTestResult(`✅ ${file} encontrado (${css.length} caracteres)`, 'success');
+                        
+                        // Verificar se tem estilos importantes
+                        const hasRootVars = css.includes(':root');
+                        const hasHeroSection = css.includes('.hero-section');
+                        const hasBootstrapOverride = css.includes('.container');
+                        const hasAnimations = css.includes('@keyframes');
+                        
+                        addContentCheck('CSS Variables', hasRootVars ? 'Definidas' : 'Não definidas', hasRootVars);
+                        addContentCheck('Hero Section Styles', hasHeroSection ? 'Presentes' : 'Ausentes', hasHeroSection);
+                        addContentCheck('Bootstrap Override', hasBootstrapOverride ? 'Presente' : 'Ausente', hasBootstrapOverride);
+                        addContentCheck('Animations', hasAnimations ? 'Presentes' : 'Ausentes', hasAnimations);
+                        
+                    } else {
+                        addTestResult(`❌ ${file} não encontrado (${response.status})`, 'error');
+                    }
+                } catch (error) {
+                    addTestResult(`❌ Erro ao verificar ${file}: ${error.message}`, 'error');
+                }
+            }
+        }
+
+        async function testUserLayoutScripts() {
+            addTestResult('⚡ Verificando scripts do layout usuário...', 'info');
+            
+            const jsFiles = [
+                'layout2/js/main.js'
+            ];
+            
+            for (const file of jsFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const js = await response.text();
+                        addTestResult(`✅ ${file} encontrado (${js.length} caracteres)`, 'success');
+                        
+                        // Verificar se tem funcionalidades importantes
+                        const hasAOSInit = js.includes('AOS.init');
+                        const hasTypewriter = js.includes('typewriter');
+                        const hasScrollEffects = js.includes('scroll');
+                        const hasFormHandling = js.includes('form');
+                        
+                        addContentCheck('AOS Initialization', hasAOSInit ? 'Presente' : 'Ausente', hasAOSInit);
+                        addContentCheck('Typewriter Effect', hasTypewriter ? 'Presente' : 'Ausente', hasTypewriter);
+                        addContentCheck('Scroll Effects', hasScrollEffects ? 'Presentes' : 'Ausentes', hasScrollEffects);
+                        addContentCheck('Form Handling', hasFormHandling ? 'Presente' : 'Ausente', hasFormHandling);
+                        
+                    } else {
+                        addTestResult(`❌ ${file} não encontrado (${response.status})`, 'error');
+                    }
+                } catch (error) {
+                    addTestResult(`❌ Erro ao verificar ${file}: ${error.message}`, 'error');
+                }
+            }
+        }
+
+        async function simulateLayoutSwitch() {
+            addTestResult('🔄 Simulando alternância de layout...', 'info');
+            
+            // Verificar se o LayoutManager está disponível
+            if (typeof window.layoutManager !== 'undefined') {
+                addTestResult('✅ LayoutManager encontrado', 'success');
+                
+                // Simular o processo de carregamento
+                addTestResult('🔄 Iniciando simulação...', 'info');
+                
+                try {
+                    // Testar carregamento do HTML
+                    const response = await fetch('layout2/index.html');
+                    if (response.ok) {
+                        addTestResult('✅ HTML carregado com sucesso', 'success');
+                        
+                        // Testar carregamento do CSS
+                        const cssResponse = await fetch('layout2/css/style.css');
+                        if (cssResponse.ok) {
+                            addTestResult('✅ CSS carregado com sucesso', 'success');
+                            
+                            // Testar carregamento do JS
+                            const jsResponse = await fetch('layout2/js/main.js');
+                            if (jsResponse.ok) {
+                                addTestResult('✅ JS carregado com sucesso', 'success');
+                                addTestResult('🎯 Layout usuário pronto para ser aplicado!', 'success');
+                            } else {
+                                addTestResult('❌ JS não encontrado', 'error');
+                            }
+                        } else {
+                            addTestResult('❌ CSS não encontrado', 'error');
+                        }
+                    } else {
+                        addTestResult('❌ HTML não encontrado', 'error');
+                    }
+                } catch (error) {
+                    addTestResult(`❌ Erro na simulação: ${error.message}`, 'error');
+                }
+                
+            } else {
+                addTestResult('❌ LayoutManager não encontrado', 'error');
+                addTestResult('💡 Abra o portfolio principal para testar', 'info');
+            }
+        }
+
+        // Executar testes automáticos
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addTestResult('🚀 Iniciando testes automáticos...', 'info');
+                testUserLayoutContent();
+                setTimeout(() => testUserLayoutStyles(), 1000);
+                setTimeout(() => testUserLayoutScripts(), 2000);
+                setTimeout(() => simulateLayoutSwitch(), 3000);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

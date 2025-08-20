@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Conteúdos Visíveis - Layout Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+        .content-preview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 10px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+        }
+        .visibility-check {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        .visibility-check.success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        .visibility-check.error {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .visibility-check i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔍 Teste Conteúdos Visíveis - Layout Usuário</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> Verificando se os conteúdos estão visíveis no layout usuário
+        </div>
+        
+        <h2>Testes:</h2>
+        
+        <button class="test-button" onclick="testContentVisibility()">
+            👁️ Verificar Visibilidade
+        </button>
+        
+        <button class="test-button" onclick="testLayoutSwitch()">
+            🔄 Testar Alternância Completa
+        </button>
+        
+        <button class="test-button" onclick="forceContentDisplay()">
+            🔧 Forçar Exibição
+        </button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `status ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function addVisibilityCheck(elementName, isVisible, details = '') {
+            const resultsDiv = document.getElementById('test-results');
+            const checkDiv = document.createElement('div');
+            checkDiv.className = `visibility-check ${isVisible ? 'success' : 'error'}`;
+            checkDiv.innerHTML = `
+                <i>${isVisible ? '✅' : '❌'}</i>
+                <strong>${elementName}:</strong> ${isVisible ? 'Visível' : 'Não visível'} ${details}
+            `;
+            resultsDiv.appendChild(checkDiv);
+        }
+
+        function addContentPreview(title, content) {
+            const resultsDiv = document.getElementById('test-results');
+            const previewDiv = document.createElement('div');
+            previewDiv.className = 'content-preview';
+            previewDiv.innerHTML = `<strong>${title}:</strong><br>${content}`;
+            resultsDiv.appendChild(previewDiv);
+        }
+
+        async function testContentVisibility() {
+            addTestResult('👁️ Verificando visibilidade dos conteúdos...', 'info');
+            
+            // Verificar se estamos no layout usuário
+            const isUserLayout = document.querySelector('.hero-section') && 
+                               document.querySelector('.about-section') && 
+                               document.querySelector('.skills-section');
+            
+            if (!isUserLayout) {
+                addTestResult('❌ Não estamos no layout usuário', 'error');
+                addTestResult('💡 Clique em "Layout Usuário" primeiro', 'info');
+                return;
+            }
+            
+            addTestResult('✅ Layout usuário detectado', 'success');
+            
+            // Verificar seções principais
+            const sections = [
+                { selector: '.hero-section', name: 'Hero Section' },
+                { selector: '.about-section', name: 'About Section' },
+                { selector: '.skills-section', name: 'Skills Section' },
+                { selector: '.projects-section', name: 'Projects Section' },
+                { selector: '.contact-section', name: 'Contact Section' }
+            ];
+            
+            sections.forEach(section => {
+                const element = document.querySelector(section.selector);
+                if (element) {
+                    const computedStyle = window.getComputedStyle(element);
+                    const isVisible = computedStyle.display !== 'none' && 
+                                    computedStyle.visibility !== 'hidden' && 
+                                    computedStyle.opacity !== '0';
+                    
+                    const details = `(display: ${computedStyle.display}, visibility: ${computedStyle.visibility}, opacity: ${computedStyle.opacity})`;
+                    addVisibilityCheck(section.name, isVisible, details);
+                    
+                    // Verificar se tem conteúdo
+                    const hasContent = element.textContent.trim().length > 0;
+                    addVisibilityCheck(`${section.name} - Conteúdo`, hasContent, `(${element.textContent.trim().length} caracteres)`);
+                } else {
+                    addVisibilityCheck(section.name, false, '(elemento não encontrado)');
+                }
+            });
+            
+            // Verificar elementos específicos
+            const elements = [
+                { selector: '.hero-title', name: 'Hero Title' },
+                { selector: '.hero-subtitle', name: 'Hero Subtitle' },
+                { selector: '.profile-image', name: 'Profile Image' },
+                { selector: '.skills-grid', name: 'Skills Grid' },
+                { selector: '.projects-grid', name: 'Projects Grid' },
+                { selector: '.contact-form', name: 'Contact Form' }
+            ];
+            
+            elements.forEach(element => {
+                const el = document.querySelector(element.selector);
+                if (el) {
+                    const computedStyle = window.getComputedStyle(el);
+                    const isVisible = computedStyle.display !== 'none' && 
+                                    computedStyle.visibility !== 'hidden';
+                    addVisibilityCheck(element.name, isVisible);
+                } else {
+                    addVisibilityCheck(element.name, false, '(elemento não encontrado)');
+                }
+            });
+            
+            // Verificar se os estilos estão aplicados
+            const userStyles = document.querySelector('link[href*="layout2/css/style.css"]');
+            addVisibilityCheck('CSS do Layout Usuário', !!userStyles, userStyles ? '(carregado)' : '(não carregado)');
+            
+            // Verificar se o AOS está funcionando
+            const hasAOS = typeof AOS !== 'undefined';
+            addVisibilityCheck('AOS Animation', hasAOS, hasAOS ? '(disponível)' : '(não disponível)');
+            
+            addTestResult('🎯 Verificação de visibilidade concluída!', 'success');
+        }
+
+        async function testLayoutSwitch() {
+            addTestResult('🔄 Testando alternância completa de layout...', 'info');
+            
+            // Verificar se o LayoutManager está disponível
+            if (typeof window.layoutManager !== 'undefined') {
+                addTestResult('✅ LayoutManager encontrado', 'success');
+                
+                // Simular o processo completo
+                addTestResult('🔄 Iniciando simulação de alternância...', 'info');
+                
+                try {
+                    // Testar carregamento do HTML
+                    const response = await fetch('layout2/index.html');
+                    if (response.ok) {
+                        const html = await response.text();
+                        addTestResult('✅ HTML carregado com sucesso', 'success');
+                        
+                        // Verificar se tem conteúdo no HTML
+                        const hasHeroSection = html.includes('hero-section');
+                        const hasAboutSection = html.includes('about-section');
+                        const hasSkillsSection = html.includes('skills-section');
+                        const hasProjectsSection = html.includes('projects-section');
+                        const hasContactSection = html.includes('contact-section');
+                        
+                        addVisibilityCheck('HTML - Hero Section', hasHeroSection);
+                        addVisibilityCheck('HTML - About Section', hasAboutSection);
+                        addVisibilityCheck('HTML - Skills Section', hasSkillsSection);
+                        addVisibilityCheck('HTML - Projects Section', hasProjectsSection);
+                        addVisibilityCheck('HTML - Contact Section', hasContactSection);
+                        
+                        // Mostrar preview do conteúdo
+                        const startIndex = html.indexOf('<section id="home"');
+                        const endIndex = html.indexOf('</section>', startIndex) + 10;
+                        const homeSection = html.substring(startIndex, endIndex);
+                        addContentPreview('Preview - Seção Home', homeSection.substring(0, 800) + '...');
+                        
+                    } else {
+                        addTestResult('❌ HTML não encontrado', 'error');
+                    }
+                } catch (error) {
+                    addTestResult(`❌ Erro na simulação: ${error.message}`, 'error');
+                }
+                
+            } else {
+                addTestResult('❌ LayoutManager não encontrado', 'error');
+                addTestResult('💡 Abra o portfolio principal para testar', 'info');
+            }
+        }
+
+        function forceContentDisplay() {
+            addTestResult('🔧 Forçando exibição dos conteúdos...', 'info');
+            
+            // Forçar visibilidade de todas as seções
+            const sections = [
+                '.hero-section',
+                '.about-section', 
+                '.skills-section',
+                '.projects-section',
+                '.contact-section'
+            ];
+            
+            sections.forEach(selector => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.style.display = 'block';
+                    element.style.visibility = 'visible';
+                    element.style.opacity = '1';
+                    addTestResult(`🔧 Forçando visibilidade: ${selector}`, 'success');
+                } else {
+                    addTestResult(`⚠️ Elemento não encontrado: ${selector}`, 'error');
+                }
+            });
+            
+            // Forçar refresh do AOS se disponível
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+                addTestResult('🔄 AOS refresh executado', 'success');
+            }
+            
+            // Forçar reflow
+            document.body.offsetHeight;
+            addTestResult('🎨 Reflow forçado', 'success');
+            
+            addTestResult('✅ Força exibição concluída!', 'success');
+        }
+
+        // Executar testes automáticos
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addTestResult('🚀 Iniciando testes automáticos...', 'info');
+                testContentVisibility();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

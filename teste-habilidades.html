@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Habilidades - Layout Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+        .skill-check {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        .skill-check.success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        .skill-check.error {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .skill-check i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        .skills-preview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 Teste Habilidades - Layout Usuário</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> Verificando se as habilidades estão aparecendo corretamente
+        </div>
+        
+        <h2>Habilidades que devem aparecer:</h2>
+        <ul>
+            <li><strong>Frontend:</strong> React, Vue.js, Angular</li>
+            <li><strong>Backend:</strong> Node.js, Python, Django, Laravel</li>
+            <li><strong>Database:</strong> PostgreSQL, MongoDB, Redis</li>
+        </ul>
+        
+        <h2>Testes:</h2>
+        
+        <button class="test-button" onclick="testSkillsSection()">
+            🔧 Verificar Seção Habilidades
+        </button>
+        
+        <button class="test-button" onclick="testSkillsContent()">
+            📋 Verificar Conteúdo das Habilidades
+        </button>
+        
+        <button class="test-button" onclick="testSkillsAnimation()">
+            🎬 Testar Animações
+        </button>
+        
+        <button class="test-button" onclick="forceSkillsDisplay()">
+            🔧 Forçar Exibição
+        </button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `status ${type}`;
+            resultDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function addSkillCheck(skillName, isFound, details = '') {
+            const resultsDiv = document.getElementById('test-results');
+            const checkDiv = document.createElement('div');
+            checkDiv.className = `skill-check ${isFound ? 'success' : 'error'}`;
+            checkDiv.innerHTML = `
+                <i>${isFound ? '✅' : '❌'}</i>
+                <strong>${skillName}:</strong> ${isFound ? 'Encontrado' : 'Não encontrado'} ${details}
+            `;
+            resultsDiv.appendChild(checkDiv);
+        }
+
+        function addSkillsPreview(title, content) {
+            const resultsDiv = document.getElementById('test-results');
+            const previewDiv = document.createElement('div');
+            previewDiv.className = 'skills-preview';
+            previewDiv.innerHTML = `<strong>${title}:</strong><br>${content}`;
+            resultsDiv.appendChild(previewDiv);
+        }
+
+        function testSkillsSection() {
+            addTestResult('🔧 Verificando seção de habilidades...', 'info');
+            
+            // Verificar se a seção existe
+            const skillsSection = document.querySelector('#habilidades');
+            if (skillsSection) {
+                addTestResult('✅ Seção de habilidades encontrada', 'success');
+                
+                // Verificar se está visível
+                const computedStyle = window.getComputedStyle(skillsSection);
+                const isVisible = computedStyle.display !== 'none' && 
+                                computedStyle.visibility !== 'hidden';
+                
+                addSkillCheck('Seção Habilidades - Visível', isVisible, 
+                    `(display: ${computedStyle.display}, visibility: ${computedStyle.visibility})`);
+                
+                // Verificar estrutura
+                const skillsGrid = skillsSection.querySelector('.skills-grid');
+                const skillCategories = skillsSection.querySelectorAll('.skill-category');
+                const skillItems = skillsSection.querySelectorAll('.skill-item');
+                
+                addSkillCheck('Skills Grid', !!skillsGrid);
+                addSkillCheck('Skill Categories', skillCategories.length > 0, `(${skillCategories.length} categorias)`);
+                addSkillCheck('Skill Items', skillItems.length > 0, `(${skillItems.length} habilidades)`);
+                
+            } else {
+                addTestResult('❌ Seção de habilidades não encontrada', 'error');
+            }
+        }
+
+        function testSkillsContent() {
+            addTestResult('📋 Verificando conteúdo das habilidades...', 'info');
+            
+            // Lista de habilidades esperadas
+            const expectedSkills = [
+                'React', 'Vue.js', 'Angular',  // Frontend
+                'Node.js', 'Python', 'Django', 'Laravel',  // Backend
+                'PostgreSQL', 'MongoDB', 'Redis'  // Database
+            ];
+            
+            expectedSkills.forEach(skill => {
+                const skillElement = document.querySelector(`[data-skill="${skill}"]`);
+                if (skillElement) {
+                    const skillName = skillElement.querySelector('.skill-name');
+                    const progressBar = skillElement.querySelector('.skill-progress');
+                    const level = skillElement.getAttribute('data-level');
+                    
+                    addSkillCheck(skill, true, `(nível: ${level}%)`);
+                    
+                    // Verificar se tem nome e barra de progresso
+                    if (skillName) {
+                        addSkillCheck(`${skill} - Nome`, true, `(${skillName.textContent})`);
+                    }
+                    if (progressBar) {
+                        addSkillCheck(`${skill} - Barra de Progresso`, true, 
+                            `(largura: ${progressBar.getAttribute('data-width')})`);
+                    }
+                } else {
+                    addSkillCheck(skill, false);
+                }
+            });
+            
+            // Verificar categorias
+            const categories = ['Frontend', 'Backend', 'Database'];
+            categories.forEach(category => {
+                const categoryElement = document.querySelector(`.category-title:contains("${category}")`);
+                if (categoryElement) {
+                    addSkillCheck(`Categoria ${category}`, true);
+                } else {
+                    addSkillCheck(`Categoria ${category}`, false);
+                }
+            });
+        }
+
+        function testSkillsAnimation() {
+            addTestResult('🎬 Testando animações das habilidades...', 'info');
+            
+            // Verificar se a função de animação existe
+            if (typeof initSkillsAnimation === 'function') {
+                addTestResult('✅ Função de animação encontrada', 'success');
+                
+                // Verificar se as barras de progresso estão animadas
+                const progressBars = document.querySelectorAll('.skill-progress');
+                progressBars.forEach((bar, index) => {
+                    const skillName = bar.closest('.skill-item').getAttribute('data-skill');
+                    const currentWidth = bar.style.width;
+                    const targetWidth = bar.getAttribute('data-width');
+                    
+                    if (currentWidth === targetWidth) {
+                        addSkillCheck(`${skillName} - Animação`, true, `(largura: ${currentWidth})`);
+                    } else {
+                        addSkillCheck(`${skillName} - Animação`, false, 
+                            `(atual: ${currentWidth}, esperado: ${targetWidth})`);
+                    }
+                });
+                
+                // Tentar executar a animação
+                try {
+                    initSkillsAnimation();
+                    addTestResult('✅ Animação executada com sucesso', 'success');
+                } catch (error) {
+                    addTestResult(`❌ Erro ao executar animação: ${error.message}`, 'error');
+                }
+                
+            } else {
+                addTestResult('❌ Função de animação não encontrada', 'error');
+            }
+        }
+
+        function forceSkillsDisplay() {
+            addTestResult('🔧 Forçando exibição das habilidades...', 'info');
+            
+            // Forçar visibilidade da seção
+            const skillsSection = document.querySelector('#habilidades');
+            if (skillsSection) {
+                skillsSection.style.display = 'block';
+                skillsSection.style.visibility = 'visible';
+                skillsSection.style.opacity = '1';
+                addTestResult('✅ Visibilidade da seção forçada', 'success');
+            }
+            
+            // Forçar animação das barras de progresso
+            const progressBars = document.querySelectorAll('.skill-progress');
+            progressBars.forEach((bar, index) => {
+                const targetWidth = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                    bar.style.transition = 'width 1s ease-in-out';
+                }, index * 100);
+            });
+            
+            addTestResult(`✅ Animação forçada para ${progressBars.length} barras de progresso`, 'success');
+            
+            // Forçar refresh do AOS se disponível
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+                addTestResult('🔄 AOS refresh executado', 'success');
+            }
+            
+            // Forçar reflow
+            document.body.offsetHeight;
+            addTestResult('🎨 Reflow forçado', 'success');
+        }
+
+        // Executar testes automáticos
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addTestResult('🚀 Iniciando testes automáticos...', 'info');
+                testSkillsSection();
+                setTimeout(() => testSkillsContent(), 1000);
+                setTimeout(() => testSkillsAnimation(), 2000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
