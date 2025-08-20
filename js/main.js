@@ -43,6 +43,7 @@ function initializeApp() {
         initCursorEffect();       // Efeitos de cursor personalizado
         initParticleEffect();     // Efeito de partículas no fundo
         initNavbarScroll();       // Navbar que desce com scroll
+        initTracking();           // Sistema de tracking de eventos
         
         isAppInitialized = true;
         console.log('🚀 Portfolio Code Editor inicializado com sucesso!');
@@ -54,6 +55,7 @@ function initializeApp() {
 // Função para resetar o estado da aplicação
 function resetAppState() {
     isAppInitialized = false;
+    isTrackingInitialized = false;
     console.log('🔄 Estado da aplicação resetado');
 }
 
@@ -555,20 +557,33 @@ function trackEvent(eventName, properties = {}) {
 }
 
 // Track important interactions
-document.addEventListener('click', (e) => {
-    if (e.target.matches('.nav-link')) {
-        trackEvent('navigation_click', {
-            section: e.target.getAttribute('href')
-        });
+// Variável para controlar se o event listener já foi registrado
+let isTrackingInitialized = false;
+
+function initTracking() {
+    if (isTrackingInitialized) {
+        console.log('ℹ️ Tracking já inicializado - pulando');
+        return;
     }
     
-    if (e.target.matches('.control')) {
-        trackEvent('editor_control_click', {
-            control: e.target.classList.contains('close') ? 'close' : 
-                    e.target.classList.contains('minimize') ? 'minimize' : 'maximize'
-        });
-    }
-});
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('.nav-link')) {
+            trackEvent('navigation_click', {
+                section: e.target.getAttribute('href')
+            });
+        }
+        
+        if (e.target.matches('.control')) {
+            trackEvent('editor_control_click', {
+                control: e.target.classList.contains('close') ? 'close' : 
+                        e.target.classList.contains('minimize') ? 'minimize' : 'maximize'
+            });
+        }
+    });
+    
+    isTrackingInitialized = true;
+    console.log('📊 Tracking inicializado');
+}
 
 // ===== EXPORT FUNCTIONS =====
 window.portfolioApp = {
