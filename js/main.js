@@ -567,7 +567,7 @@ function initTracking() {
     }
     
     document.addEventListener('click', (e) => {
-        if (e.target.matches('.nav-link')) {
+        if (e.target.matches('.nav-link') && e.target.hasAttribute('href')) {
             trackEvent('navigation_click', {
                 section: e.target.getAttribute('href')
             });
@@ -577,6 +577,13 @@ function initTracking() {
             trackEvent('editor_control_click', {
                 control: e.target.classList.contains('close') ? 'close' : 
                         e.target.classList.contains('minimize') ? 'minimize' : 'maximize'
+            });
+        }
+        
+        // Tracking específico para o botão de layout
+        if (e.target.matches('.layout-toggle')) {
+            trackEvent('layout_toggle_click', {
+                currentLayout: 'dev'
             });
         }
     });
