@@ -149,6 +149,14 @@ function initNavbar() {
                             behavior: 'smooth',
                             block: 'start'
                         });
+                        
+                        // Garantir que os links permaneçam visíveis após o clique
+                        setTimeout(() => {
+                            navLinks.forEach(navLink => {
+                                navLink.style.opacity = '1';
+                                navLink.style.visibility = 'visible';
+                            });
+                        }, 100);
                     }
                 } catch (linkError) {
                     console.log('ℹ️ Erro no link de navegação');
@@ -247,9 +255,7 @@ function initScrollAnimations() {
                     entry.target.style.animation = 'glow 2s ease-in-out infinite';
                 }
                 
-                if (entry.target.classList.contains('nav-link')) {
-                    entry.target.style.animation = 'bounce 0.6s ease-in-out';
-                }
+
                 
                 if (entry.target.classList.contains('profile-photo')) {
                     entry.target.style.animation = 'float 6s ease-in-out infinite, pulse 4s ease-in-out infinite';
@@ -259,7 +265,7 @@ function initScrollAnimations() {
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.code-editor, .nav-link, .profile-photo, .footer-content');
+    const animatedElements = document.querySelectorAll('.code-editor, .profile-photo, .footer-content');
     
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
@@ -338,6 +344,11 @@ function initMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     
     if (mobileMenuIcon && navMenu) {
+        // Inicializa o menu como visível em desktop
+        if (window.innerWidth > 768) {
+            navMenu.style.display = 'flex';
+        }
+        
         mobileMenuIcon.addEventListener('click', () => {
             const isActive = mobileMenuIcon.classList.contains('active');
             
@@ -382,6 +393,23 @@ function initMobileMenu() {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenuIcon.classList.contains('active')) {
                 mobileMenuIcon.classList.remove('active');
+                navMenu.style.display = 'none';
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                // Desktop: show menu normally
+                mobileMenuIcon.classList.remove('active');
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'row';
+                navMenu.style.position = 'static';
+                navMenu.style.background = 'transparent';
+                navMenu.style.borderTop = 'none';
+                navMenu.style.padding = '0';
+            } else {
+                // Mobile: hide menu initially
                 navMenu.style.display = 'none';
             }
         });
